@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<ApiVersions xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<ApiVersionEntries resourceName="/workspaces"
+		deprecated="false" versionName="v1" />
+	<ApiVersionEntries resourceName="/sessions"
+		deprecated="false" versionName="v1" />
+</ApiVersions>
