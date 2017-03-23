@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	
+	<persistence-unit name="test">
+		<class>org.se.lab.User</class>
+		<properties>
+          	<!-- Scan for annotated classes and Hibernate mapping XML files 
+			<property name="hibernate.archive.autodetection" value="class, hbm"/>
+          	-->
+          	
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect" />
+          	
+          	<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+          	<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/testdb"/>
+          	<property name="hibernate.connection.username" value="student"/>
+          	<property name="hibernate.connection.password" value="student"/>
+
+
+          	<!-- 
+            	SQL stdout logging 
+          	<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+          	--> 
+          	<property name="hibernate.show_sql" value="true"/>
+          	<property name="hibernate.format_sql" value="true"/>
+          	<property name="use_sql_comments" value="true"/>
+      	</properties>
+	</persistence-unit>
+		
+</persistence>

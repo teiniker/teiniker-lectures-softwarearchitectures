@@ -1,0 +1,48 @@
+<project name="java-ws-endpoint" default="generate.endpoint"  basedir=".">
+
+	<property name="prefix" location="dist" />
+	<property name="src" location="src" />
+	<property name="src-gen" location="src-gen" />	
+	<property name="build" location="build" />
+		
+	<path id="compile.classpath">
+		<pathelement path="${java.class.path}" />
+		<pathelement path="${build}" />
+	</path>
+
+	
+	<!-- Create the generated and build directory-->
+	<target name="init" >
+	    <mkdir dir="${src-gen}" />
+	</target>
+
+	<!-- Clean up -->
+	<target name="clean" >
+		<delete dir="${src-gen}" />
+	</target>
+
+	
+	<!-- WS endpoint -->
+
+	<target name="generate.endpoint" depends="init" >
+		<exec dir="." executable="wsgen">
+	    	<arg line="-cp ${build} -d ${build} -s ${src-gen} org.se.lab.ws.UserServiceRemoteFacade"/>
+		</exec>
+	</target>
+	
+	<target name="generate.wsdl" depends="init" >
+		<exec dir="." executable="wsgen" >
+	    	<arg line="-cp ${build} -wsdl org.se.lab.ws.UserServiceRemoteFacade"/>
+		</exec>
+	</target>
+	
+	
+	<!-- WS client -->
+	
+	<target name="generate.stubs" depends="init" >
+		<exec dir="." executable="wsimport">
+	    	<arg line="-d ${build} -s ${src-gen} -p org.se.lab.stubs http://localhost:8030/v1/UserService?wsdl"/>
+		</exec>
+	</target>
+
+</project>

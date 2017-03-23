@@ -1,0 +1,6 @@
+/target/
+/.settings/
+/.classpath
+/.project
+/jdbc.properties
+/ClassDiagram.ucls

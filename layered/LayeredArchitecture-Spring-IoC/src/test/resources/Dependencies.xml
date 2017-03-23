@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+           
+	<bean id="personDAO" class="org.se.lab.data.PersonDAOInMemoryImpl"/>
+	
+	<bean id="personDAOlogger" class="org.se.lab.data.PersonDAOLogger">
+		<property name="dao" ref="personDAO"/>
+	</bean>
+	
+	<bean id="personService" class="org.se.lab.service.PersonServiceImpl">
+		<property name="dao" ref="personDAOlogger"/>
+	</bean>
+	
+	<bean id="personHelper" class="org.se.lab.presentation.PersonViewHelper">
+		<property name="service" ref="personService"/>
+	</bean>
+</beans>
