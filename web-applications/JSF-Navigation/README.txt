@@ -7,7 +7,7 @@ $ mvn wildfly:run
 How to access the Web application?
 -------------------------------------------------------------------------------
 
-URL: http://localhost:8080/JSF-CDI
+URL: http://localhost:8080/JSF-Navigation/
 
 
 How to use CDI for managed beans?
