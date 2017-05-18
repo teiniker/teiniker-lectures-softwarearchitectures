@@ -1,0 +1,263 @@
+@SOAPBinding(style=Style.RPC)
+-------------------------------------------------------------------------------
+
+o) WSDL
+<?xml version="1.0" ?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+	xmlns:tns="http://service.lab.se.org/" 
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:ns1="http://schemas.xmlsoap.org/soap/http" 
+	name="UserResourceEJBService" targetNamespace="http://service.lab.se.org/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:tns="http://service.lab.se.org/" 
+	targetNamespace="http://service.lab.se.org/" version="1.0">
+
+  <xs:element name="user" type="tns:userDTO"></xs:element>
+
+  <xs:complexType name="userDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="username" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="password" type="xs:string"></xs:element>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:int" use="required"></xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="user">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int"></xs:element>
+      <xs:element minOccurs="0" name="password" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="username" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType final="#all" name="userDTOArray">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:userDTO"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+
+
+  </wsdl:types>
+  <wsdl:message name="findAllResponse">
+    <wsdl:part name="return" type="tns:userDTOArray">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insert">
+    <wsdl:part name="arg0" type="tns:userDTO">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="update">
+    <wsdl:part name="arg0" type="xsd:int">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="tns:userDTO">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertResponse">
+    <wsdl:part name="return" type="tns:user">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateResponse">
+  </wsdl:message>
+  <wsdl:message name="delete">
+    <wsdl:part name="arg0" type="xsd:int">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findAll">
+    <wsdl:part name="arg0" type="xsd:int">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:int">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findById">
+    <wsdl:part name="arg0" type="xsd:int">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findByIdResponse">
+    <wsdl:part name="return" type="tns:userDTO">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteResponse">
+  </wsdl:message>
+
+
+  <wsdl:portType name="UserService">
+    <wsdl:operation name="insert">
+      <wsdl:input message="tns:insert" name="insert">
+    </wsdl:input>
+      <wsdl:output message="tns:insertResponse" name="insertResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="update">
+      <wsdl:input message="tns:update" name="update">
+    </wsdl:input>
+      <wsdl:output message="tns:updateResponse" name="updateResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findById">
+      <wsdl:input message="tns:findById" name="findById">
+    </wsdl:input>
+      <wsdl:output message="tns:findByIdResponse" name="findByIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delete">
+      <wsdl:input message="tns:delete" name="delete">
+    </wsdl:input>
+      <wsdl:output message="tns:deleteResponse" name="deleteResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findAll">
+      <wsdl:input message="tns:findAll" name="findAll">
+    </wsdl:input>
+      <wsdl:output message="tns:findAllResponse" name="findAllResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+
+
+  <wsdl:binding name="UserResourceEJBServiceSoapBinding" type="tns:UserService">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+    <wsdl:operation name="insert">
+      <soap:operation soapAction="" style="rpc"></soap:operation>
+      <wsdl:input name="insert">
+        <soap:body namespace="http://service.lab.se.org/" use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="insertResponse">
+        <soap:body namespace="http://service.lab.se.org/" use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="update">
+      <soap:operation soapAction="" style="rpc"></soap:operation>
+      <wsdl:input name="update">
+        <soap:body namespace="http://service.lab.se.org/" use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="updateResponse">
+        <soap:body namespace="http://service.lab.se.org/" use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findById">
+      <soap:operation soapAction="" style="rpc"></soap:operation>
+      <wsdl:input name="findById">
+        <soap:body namespace="http://service.lab.se.org/" use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="findByIdResponse">
+        <soap:body namespace="http://service.lab.se.org/" use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delete">
+      <soap:operation soapAction="" style="rpc"></soap:operation>
+      <wsdl:input name="delete">
+        <soap:body namespace="http://service.lab.se.org/" use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="deleteResponse">
+        <soap:body namespace="http://service.lab.se.org/" use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findAll">
+      <soap:operation soapAction="" style="rpc"></soap:operation>
+      <wsdl:input name="findAll">
+        <soap:body namespace="http://service.lab.se.org/" use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="findAllResponse">
+        <soap:body namespace="http://service.lab.se.org/" use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+
+
+  <wsdl:service name="UserResourceEJBService">
+    <wsdl:port binding="tns:UserResourceEJBServiceSoapBinding" name="UserServicePort">
+      <soap:address location="http://localhost:8080/SOAP-EJB-UserService/UserService"></soap:address>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
+
+
+o) @WebMethod
+	public User insert(UserDTO user)
+	
+	POST /SOAP-EJB-UserService/UserService HTTP/1.1
+	Accept: text/xml, multipart/related
+	Content-Type: text/xml; charset=utf-8
+	SOAPAction: ""
+	User-Agent: JAX-WS RI 2.2.9-b130926.1035 svn-revision#5f6196f2b90e9460065a4c2f4e30e065b245e51e
+	Host: localhost:8080
+	Connection: keep-alive
+	Content-Length: 273
+	
+	<?xml version="1.0" ?>
+	<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+		<S:Body>
+			<ns2:insert xmlns:ns2="http://service.lab.se.org/">
+				<arg0 id="0">
+					<username>moe</username>
+					<password>Y+iFykiLdllQS1h40BfioZb0R14=</password>
+				</arg0>
+			</ns2:insert>
+		</S:Body>
+	</S:Envelope>
+	
+	
+
+o) @WebMethod
+	public List<UserDTO> findAll(int index, int size)
+	
+	POST /SOAP-EJB-UserService/UserService HTTP/1.1
+	Accept: text/xml, multipart/related
+	Content-Type: text/xml; charset=utf-8
+	SOAPAction: ""
+	User-Agent: JAX-WS RI 2.2.9-b130926.1035 svn-revision#5f6196f2b90e9460065a4c2f4e30e065b245e51e
+	Host: localhost:8080
+	Connection: keep-alive
+	Content-Length: 213
+	
+	<?xml version="1.0" ?>
+	<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+		<S:Body>
+			<ns2:findAll xmlns:ns2="http://service.lab.se.org/">
+				<arg0>100</arg0>
+				<arg1>66</arg1>
+			</ns2:findAll>
+		</S:Body>
+	</S:Envelope>
+
+
+	HTTP/1.1 200 OK
+	Connection: keep-alive
+	X-Powered-By: Undertow/1
+	Server: WildFly/9
+	Content-Type: text/xml;charset=UTF-8
+	Content-Length: 625
+	Date: Wed, 07 Oct 2015 13:28:28 GMT
+	
+	<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+		<soap:Body>
+			<ns1:findAllResponse xmlns:ns1="http://service.lab.se.org/">
+				<return xmlns:ns2="http://service.lab.se.org/">
+					<item id="1">
+						<username>homer</username>
+						<password>ijD8qepbRnIsva0kx0cKRCcYysg=</password>
+					</item>
+					<item id="2">
+						<username>marge</username>
+						<password>xCSuPDv2U6I5jEO1wqvEQ/jPYhY=</password>
+					</item>
+					<item id="3">
+						<username>bart</username>
+						<password>Ls4jKY8G2ftFdy/bHTgIaRjID0Q=</password>
+					</item>
+					<item id="4">
+						<username>lisa</username>
+						<password>xO0U4gIN1F7bV7X7ovQN2TlSUF4=</password>
+					</item>
+				</return>
+			</ns1:findAllResponse>
+		</soap:Body>
+	</soap:Envelope>
+
+
+
+	
