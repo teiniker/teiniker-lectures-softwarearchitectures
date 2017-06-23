@@ -1,4 +1,4 @@
-package org.se.lab.service;
+package org.se.lab.domain;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ public class ArticleService
 	private final Logger LOG = Logger.getLogger(ArticleService.class);
 	
 	@Inject
-	private ArticleRepository dao;
+	private ArticleRepository repo;
 	
 	/*
 	 * API Operations
@@ -25,7 +25,7 @@ public class ArticleService
 
 		try
 		{
-			dao.insert(article);
+			repo.insert(article);
 		}
 		catch(Exception e)
 		{
@@ -57,7 +57,7 @@ public class ArticleService
 
 		try
 		{
-			List<Article> list = dao.findAll();
+			List<Article> list = repo.findAll();
 			return list;
 		}
 		catch(Exception e)
@@ -74,7 +74,7 @@ public class ArticleService
 
 		try
 		{
-			Article article = dao.findById(id);
+			Article article = repo.findById(id);
 			return article;
 		}
 		catch(Exception e)

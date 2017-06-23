@@ -8,8 +8,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.apache.log4j.Logger;
-import org.se.lab.service.Article;
-import org.se.lab.service.ArticleService;
+import org.se.lab.domain.Article;
+import org.se.lab.domain.ArticleService;
 
 @Named
 @RequestScoped

@@ -1,4 +1,4 @@
-package org.se.lab.service;
+package org.se.lab.domain;
 
 public class ServiceException
 	extends RuntimeException

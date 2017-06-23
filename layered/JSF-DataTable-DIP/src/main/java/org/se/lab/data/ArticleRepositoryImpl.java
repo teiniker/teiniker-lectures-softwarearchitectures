@@ -6,8 +6,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.apache.log4j.Logger;
-import org.se.lab.service.Article;
-import org.se.lab.service.ArticleRepository;
+import org.se.lab.domain.Article;
+import org.se.lab.domain.ArticleRepository;
 
 class ArticleRepositoryImpl
 	implements ArticleRepository
