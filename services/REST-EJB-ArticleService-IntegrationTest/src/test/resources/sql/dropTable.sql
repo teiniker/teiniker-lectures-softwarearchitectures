@@ -1,2 +1,2 @@
-drop table article;
-drop table hibernate_sequence;
+drop table if exists article;
+drop table if exists hibernate_sequence;
