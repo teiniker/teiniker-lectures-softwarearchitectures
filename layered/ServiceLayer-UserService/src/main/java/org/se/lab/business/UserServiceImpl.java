@@ -21,7 +21,10 @@ class UserServiceImpl // package private
 	
 	public UserServiceImpl(Connection connection)
 	{
-		logger.debug("UserServiceImpl(" + connection + ")");		
+		logger.debug("UserServiceImpl(" + connection + ")");
+		if(connection == null)
+		    throw new IllegalArgumentException("Invalid connection (null)!");
+
 		setConnection(connection);
 	}
 	
@@ -40,7 +43,7 @@ class UserServiceImpl // package private
 		logger.debug("setUserDAO(" + userDAO + ")");
 		
 		if(userDAO == null)
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid UserDAO (null)!");
 		
 		this.userDAO = userDAO;
 	}
@@ -55,14 +58,11 @@ class UserServiceImpl // package private
 	{
 		logger.debug("addUser(" + firstName + "," + lastName + "," + username + ")");
 		
-		String md5Password;
+		String hashValue;
 		try
 		{
-			md5Password = MD5Encoder.convertToMD5String(password);
-
-			txBegin();
-			getUserDAO().createUser(firstName,lastName, username, md5Password);
-			txCommit();			
+			hashValue = PasswordEncoder.toHashValue(password);
+			getUserDAO().createUser(firstName,lastName, username, hashValue);
 		}
 		catch(DAOException e)
 		{

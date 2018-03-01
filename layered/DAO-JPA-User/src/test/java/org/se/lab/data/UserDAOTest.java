@@ -13,7 +13,7 @@ import org.junit.Test;
 
 public class UserDAOTest
 {
-	private static final JdbcTestHelper JDBC_HELPER = new JdbcTestHelper();
+//	private static final JdbcTestHelper JDBC_HELPER = new JdbcTestHelper("src/test/resources/jdbc.properties");
 	private final static JpaTestHelper JPA_HELPER = new JpaTestHelper();
 
 	private EntityManager em = JPA_HELPER.getEntityManager("test");
@@ -22,13 +22,13 @@ public class UserDAOTest
 	@BeforeClass
 	public static void init()
 	{
-		JDBC_HELPER.executeSqlScript("sql/createUserTable.sql");
+//		JDBC_HELPER.executeSqlScript("src/test/resources/sql/createUserTable.sql");
 	}
 	
 	@AfterClass
 	public static void destroy()
 	{
-		JDBC_HELPER.executeSqlScript("sql/dropUserTable.sql");		
+//		JDBC_HELPER.executeSqlScript("src/test/resources/sql/dropUserTable.sql");
 	}
     
 	

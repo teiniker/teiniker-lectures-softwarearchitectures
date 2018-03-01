@@ -19,7 +19,7 @@ public class AddCommand
 	public void process() throws ServletException, IOException
 	{
 		LOG.debug("process ADD command");
-		
+
 		Connection c = null;
 		try
 		{
@@ -27,9 +27,9 @@ public class AddCommand
 			String lastName = req.getParameter("lastName");
 			String username = req.getParameter("username");
 			String password = req.getParameter("password");
- 		
+
 			// TODO: Validate request parameters!
-			
+
 			c = createConnection();
 			UserService service = factory.createUserService(c);
 			service.addUser(firstName, lastName, username, password);
@@ -55,6 +55,6 @@ public class AddCommand
 				}
 			}
 		}
-		forward("/index.jsp");			
+		forward("/index.jsp");
 	}
 }
