@@ -51,12 +51,11 @@ class UserDAOImpl
 		return em.find(User.class, id);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> findAll()
 	{
 		final String hql = "SELECT u FROM " + User.class.getName() + " AS u";	    
-	    return em.createQuery(hql).getResultList();
+	    return em.createQuery(hql, User.class).getResultList();
 	}	
 	
 	
