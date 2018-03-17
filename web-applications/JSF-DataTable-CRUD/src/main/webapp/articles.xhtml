@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<h:body>
+    <div id="header">
+        <ui:insert name="header">
+            <ui:include src="templates/header.xhtml" />
+        </ui:insert>
+    </div>
+
+    <h:form id="articleForm">
+        <h2>Article Overview</h2>
+
+        <p:dataTable var="article" value="#{articleDataBean.articles}">
+            <p:column>
+                <f:facet name="header">Id</f:facet>
+                <h:outputText value="#{article.id}" />
+            </p:column>
+
+            <p:column>
+                <f:facet name="header">Name</f:facet>
+                <p:inputText value="#{article.name}" rendered="#{articleDataBean.editable}" />
+                <h:outputText value="#{article.name}" rendered="#{not articleDataBean.editable}" />
+            </p:column>
+
+            <p:column>
+                <f:facet name="header">Price</f:facet>
+                <p:inputText value="#{article.price}" rendered="#{articleDataBean.editable}" />
+                <h:outputText value="#{article.price}" rendered="#{not articleDataBean.editable}" />
+            </p:column>
+
+            <p:column>
+                <f:facet name="header">Action</f:facet>
+                <p:commandButton value="Delete" action="#{articleDataBean.deleteArticleAction(article)}" update="@form" ajax="true"/>
+            </p:column>
+        </p:dataTable>
+        <br/>
+
+        <p:commandButton value="Refresh" action="#{articleDataBean.showArticlesAction()}" update="@form" ajax="true"/>
+        <p:commandButton value="Edit" action="#{articleDataBean.editArticleAction()}" update="@form" ajax="true"/>
+        <p:commandButton value="Save Changes" action="#{articleDataBean.updateArticlesAction}" update="@form" ajax="true"/>
+        <div>
+        <h3>Create new Article</h3>
+        <table>
+            <tr>
+                <td>Article Name: </td>
+                <td><p:inputText size="10" value="#{articleDataBean.name}"/></td>
+            </tr>
+            <tr>
+                <td>Price: </td>
+                <td><p:inputText size="10" value="#{articleDataBean.price}"/> </td>
+            </tr>
+        </table>
+        <p:commandButton value="Add" action="#{articleDataBean.addArticleAction()}" update="@form" ajax="true"/>
+    </div>
+    </h:form>
+</h:body>
+</html>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>JSF Data Table</title>
+</h:head>
+<h:body>
+    <div id="header">
+        <ui:insert name="header">
+            <ui:include src="templates/header.xhtml" />
+        </ui:insert>
+    </div>
+
+    <h2>Order Overview</h2>
+    <h:form id="orderForm">
+        <br/>
+        <p:commandButton value="Refresh" action="#{orderDataBean.showOrderListAction}" update="@form" ajax="true"/>
+        <div>
+            <h3>Create new Order</h3>
+            Customer: <p:inputText size="20" value="#{orderDataBean.customer}"/>
+            <p:commandButton value="Add" action="#{orderDataBean.addOrderAction()}" update="@form" ajax="true"/>
+        </div>
+        <br/>
+        <p:accordionPanel value="#{orderDataBean.orderList}" var="order">
+            <p:tab title="ID: #{order.id} - Customer: #{order.customer} - Total price: #{order.price}">
+                <br/>
+                <p:commandButton value="Delete Order" action="#{orderDataBean.removeOrderAction(order)}" update="@form" ajax="true"/>
+                <br/><br/>
+
+                <p:dataTable id="orderlineTable" value="#{order.orderLines}" var="orderline">
+                    <p:column>
+                        <f:facet name="header">Article</f:facet>
+                        #{orderline.article.name}
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Amount</f:facet>
+                        #{orderline.amount}
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Price</f:facet>
+                        #{orderline.price}
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Action</f:facet>
+                        <p:commandButton value="Delete Order Line" action="#{orderDataBean.removeOrderLineAction(orderline)}" update="@form" ajax="true" />
+                    </p:column>
+                </p:dataTable>
+
+                <br/>
+                <h4>Create new Order Line for Order #{order.id}</h4>
+                <h:panelGrid columns="2">
+                    <p:outputLabel for="articles" value="Article:" />
+                    <p:selectOneMenu id="articles" value="#{orderDataBean.artId}" >
+                        <f:selectItem itemLabel="Select One" itemValue="" />
+                        <f:selectItems value="#{articleDataBean.articles}" var="article" itemValue="#{article.id}"  itemLabel="#{article.name}"/>
+                    </p:selectOneMenu>
+                    <p:outputLabel for="amt" value="Amount: "/>
+                    <p:inputText id="amt" value="#{orderDataBean.amount}" />
+                </h:panelGrid>
+                <p:commandButton value="Add Order Line" action="#{orderDataBean.addOrderLineAction(order)}" update="@form" ajax="true"/>
+            </p:tab>
+        </p:accordionPanel>
+    </h:form>
+</h:body>
+</html>
