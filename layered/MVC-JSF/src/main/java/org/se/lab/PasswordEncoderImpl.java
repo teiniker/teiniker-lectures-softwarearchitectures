@@ -1,5 +1,7 @@
 package org.se.lab;
 
+import org.apache.commons.codec.binary.Hex;
+
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -19,53 +21,41 @@ public class PasswordEncoderImpl
 	
     @Override
 	public byte[] convertToBytes(String s) 
-        throws NoSuchAlgorithmException, UnsupportedEncodingException
     {
         if(s == null)
             throw new IllegalArgumentException();
-        
-        MessageDigest algorithm = MessageDigest.getInstance("SHA-256");
-        byte[] defaultBytes = s.getBytes("UTF-8");
-        algorithm.update(defaultBytes);
-        byte[] bytes = algorithm.digest();
-        return bytes;
+        try
+        {
+            MessageDigest algorithm = MessageDigest.getInstance("SHA-256");
+            byte[] defaultBytes = s.getBytes("UTF-8");
+            algorithm.update(defaultBytes);
+            byte[] bytes = algorithm.digest();
+            return bytes;
+        }
+        catch (NoSuchAlgorithmException | UnsupportedEncodingException e)
+        {
+            throw new IllegalStateException("Hash convertion failure", e);
+
+        }
     }
 
-    
+
     @Override
 	public String convertToHexString(byte[] bytes)
     {
         if(bytes == null)
             throw new IllegalArgumentException();
-        
-        StringBuffer hex = new StringBuffer();
-        for (byte b : bytes)
-        {
-            int i = (b & 0xff); // copy the byte bit pattern into int value
-            hex.append(String.format("%02x", i));
-        }
-        return hex.toString();
+
+        return Hex.encodeHexString(bytes);
     }
-    
+
 
     @Override
 	public String convertToString(String s)
     {        
         if(s == null)
             throw new IllegalArgumentException();
-        
-        try
-        {
-            return convertToHexString(convertToBytes(s));
-        } 
-        catch (NoSuchAlgorithmException e)
-        {
-            throw new IllegalStateException("MD5 convertion failure", e);
-           
-        } 
-        catch (UnsupportedEncodingException e)
-        {
-            throw new IllegalStateException("MD5 convertion failure",e);        
-        }
+
+        return Hex.encodeHexString(convertToBytes(s));
     }
 }

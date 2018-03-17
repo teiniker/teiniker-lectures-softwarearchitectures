@@ -73,7 +73,7 @@ public class UserBean
 	
 	public String login()
 	{
-		if(getName().equals("teini"))
+		if(getName().equals("student"))
 		{
 			return "welcome";			
 		}
