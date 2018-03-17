@@ -22,7 +22,6 @@
 	</build>
 
 	<dependencies>
-
 		<dependency>
 			<groupId>org.se.lab</groupId>
 			<artifactId>DAO-JDBC-User</artifactId>

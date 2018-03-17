@@ -1,5 +1,7 @@
 package org.se.lab.data;
 
+import org.apache.log4j.Logger;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,6 +10,8 @@ import java.sql.Statement;
 
 public abstract class AbstractDAOImpl
 {
+    private final Logger logger = Logger.getLogger(AbstractDAOImpl.class);
+
 	/*
 	 * Dependency: ---[1]-> connection:Connection
 	 */
@@ -19,7 +23,7 @@ public abstract class AbstractDAOImpl
 	public final void setConnection(final Connection connection)
 	{
 		if (connection == null)
-			throw new NullPointerException("connection");
+			throw new IllegalArgumentException("connection");
 		this.connection = connection;
 	}
 
@@ -38,7 +42,7 @@ public abstract class AbstractDAOImpl
 			} 
 			catch (SQLException e)
 			{
-				throw new DAOException("result set closing failure", e);
+				logger.error("Result set closing failure!", e);
 			}
 		}
 	}
@@ -53,7 +57,7 @@ public abstract class AbstractDAOImpl
 			} 
 			catch (SQLException e)
 			{
-				throw new DAOException("prepared statement closing failure", e);
+                logger.error("Prepared statement closing failure!", e);
 			}
 		}
 	}
@@ -68,7 +72,7 @@ public abstract class AbstractDAOImpl
 			} 
 			catch (SQLException e)
 			{
-				throw new DAOException("statement closing failure", e);
+                logger.error("Statement closing failure", e);
 			}
 		}
 	}

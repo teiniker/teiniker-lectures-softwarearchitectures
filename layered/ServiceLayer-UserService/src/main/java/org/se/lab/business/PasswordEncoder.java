@@ -15,15 +15,20 @@ final class PasswordEncoder // package private
     
     
     public static String toHashValue(String s)
-        throws NoSuchAlgorithmException, UnsupportedEncodingException
     {
         if(s == null)
             throw new IllegalArgumentException();
-        
-        MessageDigest algorithm = MessageDigest.getInstance("SHA-512");
-        byte[] defaultBytes = s.getBytes("UTF-8");
-        algorithm.update(defaultBytes);
-        byte[] bytes = algorithm.digest();
-        return HexBin.encode(bytes);
+        try
+        {
+            MessageDigest algorithm = MessageDigest.getInstance("SHA-512");
+            byte[] defaultBytes = s.getBytes("UTF-8");
+            algorithm.update(defaultBytes);
+            byte[] bytes = algorithm.digest();
+            return HexBin.encode(bytes);
+        }
+        catch(NoSuchAlgorithmException | UnsupportedEncodingException e)
+        {
+            throw new IllegalStateException("Unable to calculate hash value!", e);
+        }
     }
 }
