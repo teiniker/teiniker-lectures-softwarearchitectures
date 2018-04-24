@@ -11,7 +11,7 @@ public class LoginServiceImpl implements LoginService
 	/*
 	 * Simulate a database table
 	 */
-	private ConcurrentMap<String,String> table = new ConcurrentHashMap<String,String>();
+	private ConcurrentMap<String,String> table = new ConcurrentHashMap<>();
 	
 	public LoginServiceImpl()
 	{
@@ -31,7 +31,7 @@ public class LoginServiceImpl implements LoginService
 		{
 			try
 			{
-				if(table.get(username).equals(calculateMd5String(password)))
+				if(table.get(username).equals(calculateHashString(password)))
 				{
 					return true;
 				}
@@ -53,7 +53,7 @@ public class LoginServiceImpl implements LoginService
 
 	
 	
-	private String calculateMd5String(final String message)
+	private String calculateHashString(final String message)
 			throws NoSuchAlgorithmException, UnsupportedEncodingException
 	{
 		MessageDigest algorithm = MessageDigest.getInstance("MD5");		
