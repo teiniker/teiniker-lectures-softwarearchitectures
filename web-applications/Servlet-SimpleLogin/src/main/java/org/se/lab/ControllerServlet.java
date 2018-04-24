@@ -25,23 +25,26 @@ public class ControllerServlet extends HttpServlet
 	}
 
 	@Override
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException
 	{
+        LOG.info("doGet()");
 		doPost(request, response);
 	}
 
 	
 	@Override
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException
 	{
+        LOG.info("doPost()");
+
 		// Handling request
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String usergroup = request.getParameter("usergroup");
         String action = request.getParameter("action");        
-        LOG.info("request: " + action + "," + username + "," + password + "," + usergroup);
+        LOG.info("request: " + action + "," + username + "," + usergroup);
         
         String html = null;
         if(action != null && action.equals("Login"))
