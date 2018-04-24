@@ -7,9 +7,7 @@ import javax.persistence.EntityManager;
 
 import org.apache.log4j.Logger;
 
-
-@Monitored
-public class UserDAOImpl 
+public class UserDAOImpl
 	implements UserDAO
 {
 	private final Logger LOG = Logger.getLogger(UserDAOImpl.class);

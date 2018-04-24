@@ -22,7 +22,7 @@ import org.se.lab.util.WeldJUnit4Runner;
 public class CDITest extends CDITestBase
 {
 	private final Logger LOG = Logger.getLogger(CDITest.class);
-	private static final JdbcTestHelper JDBC_HELPER = new JdbcTestHelper();
+//	private static final JdbcTestHelper JDBC_HELPER = new JdbcTestHelper("src/test/resources/jdbc.properties");
 
 	@Inject
 	UserDAO dao;
@@ -33,13 +33,13 @@ public class CDITest extends CDITestBase
 	@BeforeClass
 	public static void init()
 	{
-		JDBC_HELPER.executeSqlScript("sql/createUserTable.sql");
+//		JDBC_HELPER.executeSqlScript("src/test/resources/sql/createUserTable.sql");
 	}
 
 	@AfterClass
 	public static void destroy()
 	{
-		JDBC_HELPER.executeSqlScript("sql/dropUserTable.sql");
+//		JDBC_HELPER.executeSqlScript("src/test/resources/sql/dropUserTable.sql");
 	}
 
 	@Before
