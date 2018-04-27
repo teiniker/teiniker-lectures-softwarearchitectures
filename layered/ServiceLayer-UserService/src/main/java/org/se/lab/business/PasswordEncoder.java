@@ -1,6 +1,6 @@
 package org.se.lab.business;
 
-import com.sun.org.apache.xerces.internal.impl.dv.util.HexBin;
+import org.apache.commons.codec.binary.Hex;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -24,7 +24,7 @@ final class PasswordEncoder // package private
             byte[] defaultBytes = s.getBytes("UTF-8");
             algorithm.update(defaultBytes);
             byte[] bytes = algorithm.digest();
-            return HexBin.encode(bytes);
+            return Hex.encodeHexString(bytes);
         }
         catch(NoSuchAlgorithmException | UnsupportedEncodingException e)
         {
