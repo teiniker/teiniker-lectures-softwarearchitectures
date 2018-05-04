@@ -6,10 +6,11 @@ import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-import org.apache.log4j.Logger;
+import org.jboss.logging.Logger;
 import org.se.lab.data.User;
 import org.se.lab.data.UserDAO;
-
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
 
 @Stateless
 @Remote(UserService.class)

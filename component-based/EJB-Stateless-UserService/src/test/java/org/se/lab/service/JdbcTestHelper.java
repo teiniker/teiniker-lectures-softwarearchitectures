@@ -1,9 +1,6 @@
 package org.se.lab.service;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -27,7 +24,7 @@ class JdbcTestHelper
     
     public JdbcTestHelper()
     {
-    	this("/jdbc.properties");
+    	this("jdbc.properties");
     }
     
     public JdbcTestHelper(String propertyFileName) 
@@ -38,7 +35,7 @@ class JdbcTestHelper
         try
 		{
         	Properties jdbcProperties = new Properties();
-			jdbcProperties.load(this.getClass().getResourceAsStream(propertyFileName));
+			jdbcProperties.load(new FileInputStream(propertyFileName));
 			driver = jdbcProperties.getProperty("jdbc.driver");
 			url = jdbcProperties.getProperty("jdbc.url");
 			user = jdbcProperties.getProperty("jdbc.username");

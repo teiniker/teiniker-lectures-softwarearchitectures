@@ -5,10 +5,9 @@
 
 	<persistence-unit name="primary">
 		<jta-data-source>java:jboss/datasources/MySqlDS</jta-data-source>
-		<class>org.se.lab.data.User</class>
-		<properties>
-			<!-- Properties for Hibernate -->
-			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect" />
+			<properties>
+				<property name="hibernate.archive.autodetection" value="class, hbm"/>
+				<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
 			
 			<!-- 
             	SQL stdout logging 
