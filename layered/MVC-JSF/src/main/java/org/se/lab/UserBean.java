@@ -3,6 +3,7 @@ package org.se.lab;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -11,7 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Named  
-@SessionScoped
+@RequestScoped
 public class UserBean
 	implements Serializable
 {
@@ -62,7 +63,7 @@ public class UserBean
 	public void setPassword(String plainText)
 	{
 		String password = encoder.convertToString(plainText);
-		LOG.debug("setPassword(" + password + ")");
+		LOG.debug("setPassword()");
 		this.password = password;
 	}
 	
@@ -70,7 +71,8 @@ public class UserBean
 	/*
 	 * Actions
 	 */
-	
+
+	//TODO: Handle password
 	public String login()
 	{
 		if(getName().equals("student"))
