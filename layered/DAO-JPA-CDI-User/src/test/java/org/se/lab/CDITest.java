@@ -25,10 +25,10 @@ public class CDITest extends CDITestBase
 //	private static final JdbcTestHelper JDBC_HELPER = new JdbcTestHelper("src/test/resources/jdbc.properties");
 
 	@Inject
-	UserDAO dao;
+	private UserDAO dao;
 
 	@Inject
-	EntityManager em;
+	private EntityManager em;
 
 	@BeforeClass
 	public static void init()
