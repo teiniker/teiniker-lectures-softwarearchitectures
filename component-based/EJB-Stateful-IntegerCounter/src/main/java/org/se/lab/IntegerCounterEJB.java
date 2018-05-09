@@ -5,8 +5,11 @@ import javax.annotation.PreDestroy;
 import javax.ejb.Remote;
 import javax.ejb.Remove;
 import javax.ejb.Stateful;
+import javax.ejb.TransactionAttribute;
 
-import org.apache.log4j.Logger;
+import org.jboss.logging.Logger;
+
+import static javax.ejb.TransactionAttributeType.NOT_SUPPORTED;
 
 
 @Stateful
@@ -26,14 +29,14 @@ public class IntegerCounterEJB
 		LOG.info("IntegerCounterEJB.CounterBean() " + this);
 	}
 	
-	@PostConstruct
-    public void init()
+	@PostConstruct @TransactionAttribute(NOT_SUPPORTED)
+    protected void init()
     {
 		LOG.info("IntegerCounterEJB.init() " + this);
     }
     
-    @PreDestroy
-    public void destroy()
+    @PreDestroy @TransactionAttribute(NOT_SUPPORTED)
+    protected void destroy()
     {
     	LOG.info("IntegerCounterEJB.destroy() " + this);
     }

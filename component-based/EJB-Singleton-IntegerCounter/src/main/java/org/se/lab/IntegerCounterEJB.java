@@ -5,7 +5,9 @@ import javax.annotation.PreDestroy;
 import javax.ejb.Remote;
 import javax.ejb.Singleton;
 
-import org.apache.log4j.Logger;
+import org.jboss.logging.Logger;
+
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 @Singleton
@@ -14,7 +16,7 @@ public class IntegerCounterEJB
 	implements IntegerCounter
 {
 	private final Logger LOG = Logger.getLogger(IntegerCounterEJB.class);
-	private int count = 0;
+	private AtomicInteger count = new AtomicInteger(0);
 
 	/*
      * Life Cycle Methods
@@ -46,20 +48,21 @@ public class IntegerCounterEJB
 	public void increment()
 	{
 		LOG.info("IntegerCounterEJB.increment()");
-		this.count++;
+
+		count.incrementAndGet();
 	}
 
 	@Override
 	public void decrement()
 	{
 		LOG.info("IntegerCounterEJB.decrement()");
-		this.count--;
+		count.decrementAndGet();
 	}
 
 	@Override
 	public int getValue()
 	{
 		LOG.info("IntegerCounterEJB.getValue()");
-		return this.count;
+		return count.get();
 	}
 }
