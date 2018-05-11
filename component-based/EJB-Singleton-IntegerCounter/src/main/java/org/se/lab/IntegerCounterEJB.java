@@ -2,6 +2,8 @@ package org.se.lab;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.ejb.ConcurrencyManagement;
+import javax.ejb.ConcurrencyManagementType;
 import javax.ejb.Remote;
 import javax.ejb.Singleton;
 
@@ -9,7 +11,7 @@ import org.jboss.logging.Logger;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-
+@ConcurrencyManagement(ConcurrencyManagementType.BEAN)
 @Singleton
 @Remote(IntegerCounter.class)
 public class IntegerCounterEJB 
