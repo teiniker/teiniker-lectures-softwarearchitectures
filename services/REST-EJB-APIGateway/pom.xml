@@ -75,14 +75,14 @@
                 	</execution>
             	</executions>
             	<configuration>
-                	<!-- or using wsdls file directory -->
-                    <wsdlDirectory>src/main/resources/wsdl</wsdlDirectory> 
-                    <wsdlFile>myWSDL.wsdl</wsdlFile>
-                	<keep>true</keep> 
+                	<keep>true</keep>
                 	<!-- Package name --> 
                 	<packageName>org.se.lab.client</packageName> 
                 	<!-- generated source files destination-->
                 	<sourceDestDir>src/generated/java</sourceDestDir>
+					<!-- or using wsdls file directory -->
+					<wsdlDirectory>src/main/resources/wsdl</wsdlDirectory>
+					<wsdlFiles>UserService.wsdl</wsdlFiles>
             	</configuration>
         	</plugin>
         	
@@ -91,7 +91,7 @@
 				<artifactId>wildfly-maven-plugin</artifactId>
 				<version>1.0.2.Final</version>
 				<configuration>
-					<jbossHome>/home/student/install/wildfly-10.0.0.Final</jbossHome>
+					<jbossHome>/home/student/install/wildfly-10.1.0.Final</jbossHome>
 					<port>9990</port>
 					<server-config>standalone.xml</server-config>
 				</configuration>
