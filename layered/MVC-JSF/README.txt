@@ -1,3 +1,16 @@
+How to start the Wildfly application server?
+------------------------------------------------------------------------------
+
+$ cd JBOSS_HOME
+$ bin/standalone.sh
+
+
+How to build and deploy the Web application using Maven?
+------------------------------------------------------------------------------
+
+$ mvn wildfly:deploy
+
+
 How to access the Web application?
 -------------------------------------------------------------------------------
 
