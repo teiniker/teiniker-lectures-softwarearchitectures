@@ -2,7 +2,7 @@ package org.se.lab.data;
 
 import java.util.List;
 
-public interface UserDAO
+public interface UserDAO  // Data Access Object
 {
     void insert(User user);
     void update(User user);    
@@ -10,6 +10,7 @@ public interface UserDAO
     
     User findById(int id);
     List<User> findAll();
+    //...
     
     User createUser(String firstName, String lastName, String username, String password);
 }

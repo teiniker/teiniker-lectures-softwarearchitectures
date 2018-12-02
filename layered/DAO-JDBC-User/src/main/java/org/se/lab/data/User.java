@@ -95,7 +95,7 @@ public class User
 	public String toString()
 	{
 		return getId() + "," + getFirstname() + "," + getLastname() 
-			+ "," + getUsername() + "," + getPassword();
+			+ "," + getUsername();
 	}
 
 	@Override
