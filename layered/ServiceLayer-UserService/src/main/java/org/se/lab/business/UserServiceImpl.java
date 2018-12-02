@@ -57,7 +57,9 @@ class UserServiceImpl // package private
 			final String username, final String password) 
 	{
 		logger.debug("addUser(" + firstName + "," + lastName + "," + username + ")");
-		
+
+		// Input Validation
+
 		String hashValue;
 		try
 		{
