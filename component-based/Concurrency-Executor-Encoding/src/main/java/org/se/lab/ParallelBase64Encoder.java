@@ -24,7 +24,7 @@ public class ParallelBase64Encoder
 		}
 		catch(InterruptedException e)
 		{
-			throw new RuntimeException("Executor interrupted.", e);
+			throw new IllegalStateException("Executor interrupted.", e);
 		}
 	}
 }
