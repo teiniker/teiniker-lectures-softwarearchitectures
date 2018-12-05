@@ -9,5 +9,5 @@ rest.port=8080
 # 	Tab Proxy:
 #		Options: Interface = true	127.0.0.1:8040
 #	 	Intercept: Forward...
-proxy.address=127.0.0.1
-proxy.port=8010
+#proxy.address=127.0.0.1
+#proxy.port=8010

@@ -1,8 +1,52 @@
-How to access the WSDL definition?
+How to run the example?
 -------------------------------------------------------------------------------
+
+1) Setup the testdb database
+----------------------------
+
+$ sudo systemctl start mariadb.service
+
+$ mysql -u student -p
+student
+
+MariaDB [(none)]> use testdb;
+
+copy-paste: test/resources/sql/createUserTable.sql
+copy-paste: test/resources/sql/insertUserTable.sql
+
+MariaDB [testdb]> select * from user;
++----+----------+------------------------------+
+| id | username | password                     |
++----+----------+------------------------------+
+|  1 | homer    | ijD8qepbRnIsva0kx0cKRCcYysg= |
+|  2 | marge    | xCSuPDv2U6I5jEO1wqvEQ/jPYhY= |
+|  3 | bart     | Ls4jKY8G2ftFdy/bHTgIaRjID0Q= |
+|  4 | lisa     | xO0U4gIN1F7bV7X7ovQN2TlSUF4= |
++----+----------+------------------------------+
+
+2) Setup Wildfly
+----------------
+
+$ cd install/wildfly-x.y.z
+$ bin/standalone.sh
+
+
+3) Deploy Web service
+---------------------
+
+$ cd SOAP-EJB-UserService
+$ mvn wildfly:deploy
+
+
+4) Access Web Service
+---------------------
 
 URL: http://localhost:8080/SOAP-EJB-UserService/UserService?wsdl
 
+
+
+Examples: SOAP Messages
+-------------------------------------------------------------------------------
 
 findAll()
 -------------------------------------------------------------------------------

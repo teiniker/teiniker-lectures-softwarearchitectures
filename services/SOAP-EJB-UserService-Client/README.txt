@@ -10,7 +10,7 @@ How to Generate Client-Side Stubs?
 -------------------------------------------------------------------------------
 
 $ pwd
-SOAP-EJB-UserService
+SOAP-EJB-UserService-Client
 
 $ wsimport -verbose -Xnocompile -s src/generated/java -p org.se.lab.client http://localhost:8080/SOAP-EJB-UserService/UserService?wsdl
 

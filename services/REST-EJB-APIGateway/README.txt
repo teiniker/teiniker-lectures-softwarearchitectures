@@ -1,18 +1,31 @@
+How to setup the services?
+-------------------------------------------------------------------------------
+
+1) SOAP-EJB-UserService
+    $ cd SOAP-EJB-UserService
+    $ mvn wildfly:deploy
+    create database schema and insert test data
+        => src/test/resources/sql
+
+2) REST-EJB-ArticleService
+    $ REST-EJB-ArticleService
+    $ mvn wildfly:deploy
+    create database schema and insert test data
+        => src/test/resources/sql
+
+3) REST-EJB-APIGateway
+    $ REST-EJB-APIGateway
+    $ curl http://localhost:8080/SOAP-EJB-UserService/UserService?wsdl > src/main/resources/wsdl/UserService.wsdl
+    $ mvn wildfly:deploy
+
+
 How to access the REST resource?
 -------------------------------------------------------------------------------
 
 URL: http://localhost:8080/REST-EJB-APIGateway/v1/articles
 
 
-How to download the WSDL definition?
--------------------------------------------------------------------------------
-
-URL: http://localhost:8080/SOAP-EJB-UserService/UserService?wsdl
-
-$ mkdir src/main/resources/wsdl
-$ curl http://localhost:8080/SOAP-EJB-UserService/UserService?wsdl > src/main/resources/wsdl/UserService.wsdl
-$ less src/main/resources/wsdl/UserService.wsdl
-
+TODO: Combine Article and User to a DTO for the Service Gateway
 
 
 JAX-RS Client API

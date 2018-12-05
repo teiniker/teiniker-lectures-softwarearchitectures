@@ -46,7 +46,7 @@ class JdbcTestHelper
 		}
 		catch(Exception e)
 		{
-			throw new IllegalStateException("Unable to load " + propertyFileName + "!");
+			throw new IllegalStateException("Unable to load " + propertyFileName + "!", e);
 		}
     }
     
@@ -74,7 +74,7 @@ class JdbcTestHelper
 		}
 		catch(Exception e)
 		{
-			throw new RuntimeException("Can't execute SQL script: " + e.getMessage());
+			throw new RuntimeException("Can't execute SQL script: " + e.getMessage(), e);
 		}
 	}
 

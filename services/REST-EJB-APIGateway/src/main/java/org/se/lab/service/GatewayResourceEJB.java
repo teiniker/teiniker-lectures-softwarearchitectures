@@ -46,7 +46,7 @@ public class GatewayResourceEJB
 						.target("http://localhost:8080").path("REST-EJB-ArticleService/v1/articles")
 						.request().accept("application/xml").get(new GenericType<List<ArticleDTO>>() {});
 		
-			LOG.debug(response);
+			LOG.info(response);
 		
 			// How to access the SOAP Service
 			List<UserDTO> users = service.findAll(0, 0); 
@@ -78,7 +78,7 @@ public class GatewayResourceEJB
 						.target("http://localhost:8080").path("REST-EJB-ArticleService/v1/articles/" + id)
 						.request().accept("application/xml").get(ArticleDTO.class);
 		
-			LOG.debug(response);
+			LOG.info(response);
 			client.close();
 		}
 		catch(Exception e)

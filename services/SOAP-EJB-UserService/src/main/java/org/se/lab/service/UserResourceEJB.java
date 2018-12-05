@@ -31,12 +31,11 @@ public class UserResourceEJB
 	
 	
 	@WebMethod
-	public User insert(UserDTO user)
+	public void insert(UserDTO user)
 	{
 		LOG.debug("insert: " + user);
 
 		User u = dao.createUser(user.getUsername(), user.getPassword());
-		return u;
 	}
 	
 	

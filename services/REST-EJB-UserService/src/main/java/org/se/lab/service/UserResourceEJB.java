@@ -33,11 +33,9 @@ public class UserResourceEJB
 	{
 		LOG.debug(UserResourceEJB.class.getName() + " created");
 	}
-	
-	
+
 	@POST
-	@Consumes("application/xml")
-	@Produces("application/xml")
+	@Consumes({"application/xml", "application/json"})
 	public Response insert(UserDTO user)
 	{
 		LOG.debug("insert: " + user);

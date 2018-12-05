@@ -51,26 +51,6 @@
 					<port>9990</port>
 					<server-config>standalone.xml</server-config>
 				</configuration>
-				<executions>
-					<!-- Run wildfly and deploy application for integration tests. -->
-					<execution>
-						<id>wildfly-run</id>
-						<phase>pre-integration-test</phase>
-						<goals>
-							<goal>start</goal>
-							<goal>deploy</goal>
-						</goals>
-					</execution>
-					<!-- Integration test teardown. -->
-					<execution>
-						<id>wildfly-shutdown</id>
-						<phase>post-integration-test</phase>
-						<goals>
-							<goal>undeploy</goal>
-							<goal>shutdown</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 	      	
 		</plugins>
