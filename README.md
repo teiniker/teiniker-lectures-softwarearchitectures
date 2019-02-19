@@ -26,7 +26,7 @@ Finally, a section related to [Java Web Programming](https://github.com/teiniker
 can be found. 
 
 See also: 
-[Software Design by Exampe](https://github.com/teiniker/teiniker-lectures-softwaredesign) and 
+[Software Design by Exampe](https://github.com/teiniker/teiniker-lectures-softwaredesign) 
 
 As a development environment, you can use a pre-configured Linux VM image:
 [Virtual Lab](https://drive.google.com/drive/folders/1AzsF4Mvh1HJ8k6OW5W5hQ5CF0HdqA51l)
