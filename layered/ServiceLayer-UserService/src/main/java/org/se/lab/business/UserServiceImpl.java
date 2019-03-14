@@ -74,7 +74,7 @@ class UserServiceImpl // package private
 			logger.error(e); // Log stack trace instead of passing it to the presentation
 			throw new ServiceException("Can't add user " + username);
 		}
-		catch(Throwable e)
+		catch(Exception e)
 		{
 			txRollback();
 			logger.error(e); // Log stack trace instead of passing it to the presentation
@@ -105,7 +105,7 @@ class UserServiceImpl // package private
             logger.error(e); // Log stack trace instead of passing it to the presentation
             throw new ServiceException("Can't remove user with id = " + idString);
         }
-		catch(Throwable e)
+		catch(Exception e)
 		{
 			txRollback();
 			logger.error(e); // Log stack trace instead of passing it to the presentation
@@ -131,7 +131,7 @@ class UserServiceImpl // package private
             logger.error(e); // Log stack trace instead of passing it to the presentation
             throw new ServiceException("Can't find all user ");
         }
-		catch(Throwable e)
+		catch(Exception e)
 		{
 			txRollback();
 			logger.error(e); // Log stack trace instead of passing it to the presentation
