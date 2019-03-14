@@ -43,29 +43,34 @@ public class UserResourceEJB
 		User u = dao.createUser(user.getUsername(), user.getPassword());
 		return Response.created(URI.create("/users/" + u.getId())).build();
 	}
-	
-	
+
+
 	@PUT
 	@Path("{id}")
-	@Consumes("application/xml")
+	@Consumes("application/json")
 	public void update(@PathParam("id") int id, UserDTO user)
 	{
-		LOG.debug("update to " + user);
+		LOG.info("update to " + user);
 
-		// TODO
+		User userToUpdate = new User(user.getId(), user.getUsername(), user.getPassword());
+		dao.update(userToUpdate);
 	}
 
-	
+
 	@DELETE
 	@Path("{id}")
 	public void delete(@PathParam("id") int id)
 	{
 		LOG.debug("delete: " + id);
-		
-		// TODO
+
+		User user = dao.findById(id);
+		if(user == null)
+			throw new WebApplicationException(Response.Status.NOT_FOUND);
+		else
+			dao.delete(user);
 	}
-	
-	
+
+
 	@GET
 	@Produces({"application/xml", "application/json"})
 	public List<UserDTO> findAll()
