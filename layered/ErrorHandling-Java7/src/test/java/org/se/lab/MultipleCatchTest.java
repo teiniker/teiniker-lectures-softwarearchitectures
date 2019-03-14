@@ -28,9 +28,9 @@ public class MultipleCatchTest
 		final String user;
 		final String password;  
 	    
-    	Properties jdbcProperties = new Properties();
 		try
 		{
+			Properties jdbcProperties = new Properties();
 			jdbcProperties.load(new FileInputStream(new File("src/test/resources", propertyFileName)));
 			driver = jdbcProperties.getProperty("jdbc.driver");
 			url = jdbcProperties.getProperty("jdbc.url");
@@ -48,7 +48,7 @@ public class MultipleCatchTest
 	}
 
 	
-	@Test(expected = RuntimeException.class)
+	@Test(expected = IllegalStateException.class)
 	public void testReadFirstLineFinally() throws IOException
 	{
 		// There is no JDBC driver so we will cause an exception
