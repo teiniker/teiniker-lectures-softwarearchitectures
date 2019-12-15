@@ -24,7 +24,7 @@
 
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>2.6</version>
+				<version>3.2.3</version>
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
@@ -33,27 +33,8 @@
 			<plugin>
 				<groupId>org.wildfly.plugins</groupId>
 				<artifactId>wildfly-maven-plugin</artifactId>
-				<version>1.0.2.Final</version>
-				<executions>
-					<execution>
-						<id>wildfly-run</id>
-						<phase>pre-integration-test</phase>
-						<goals>
-							<goal>start</goal>
-							<goal>deploy</goal>
-						</goals>
-					</execution>		
-					<!-- Integration test teardown. -->
-					<execution>
-						<id>wildfly-shutdown</id>
-						<phase>post-integration-test</phase>
-						<goals>
-							<goal>undeploy</goal>
-							<goal>shutdown</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>		
+				<version>2.1.0.Beta1</version>
+			</plugin>
 		</plugins>	
 	</build>
 
