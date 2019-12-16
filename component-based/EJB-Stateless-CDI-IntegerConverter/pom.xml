@@ -23,17 +23,11 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-            <plugin>
-                <groupId>org.wildfly.plugins</groupId>
-                <artifactId>wildfly-maven-plugin</artifactId>
-                <version>1.0.2.Final</version>
-                <configuration>
-                    <jbossHome>/home/student/install/wildfly-13.0.0.Final</jbossHome>
-                    <port>9990</port>
-                    <server-config>standalone.xml</server-config>
-                    <filename>${project.build.finalName}.jar</filename>
-                </configuration>
-            </plugin>
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>2.1.0.Beta1</version>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -49,7 +43,7 @@
 			<dependency>
 				<groupId>org.wildfly</groupId>
 				<artifactId>wildfly-ejb-client-bom</artifactId>
-				<version>8.1.0.Final</version>
+				<version>18.0.1.Final</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -117,12 +111,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.jboss.sasl</groupId>
-			<artifactId>jboss-sasl</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-
-		<dependency>
 			<groupId>org.jboss.marshalling</groupId>
 			<artifactId>jboss-marshalling-river</artifactId>
 			<scope>runtime</scope>
@@ -131,6 +119,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
+			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
 
