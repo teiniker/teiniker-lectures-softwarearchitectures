@@ -31,54 +31,26 @@ public class EncodingTask
 		// Read binary file
 		long size = binaryFile.length();
 		byte[] binaryData = new byte[(int) size];
-		BufferedInputStream input = null;
-		try
+		try(BufferedInputStream input = new BufferedInputStream(new FileInputStream(binaryFile));)
 		{
-			input = new BufferedInputStream(new FileInputStream(binaryFile));
 			input.read(binaryData);
 		}
 		catch(IOException e)
 		{
 			throw new IllegalStateException(e);
 		}
-		finally
-		{
-			try
-			{
-				if(input != null)
-					input.close();
-			}
-			catch (IOException e)
-			{
-				throw new IllegalStateException(e);
-			}
-		}
-		
+
 		// Encode binary data 
 		String base64String = Base64.encodeBase64String(binaryData);
 
 		// Write base64 string
-		BufferedWriter writer =	null;
-		try
+		try(BufferedWriter writer =	new BufferedWriter(new FileWriter(base64File));)
 		{
-			writer = new BufferedWriter(new FileWriter(base64File));
 			writer.write (base64String);
 		}
 		catch (IOException e)
 		{
 			throw new IllegalStateException(e);
-		}
-		finally
-		{
-			try
-			{
-				if(writer != null)
-				writer.close();
-			}
-			catch (IOException e)
-			{
-				throw new IllegalStateException(e);
-			}	
 		}
 	}
 }
