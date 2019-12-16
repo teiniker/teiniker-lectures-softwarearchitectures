@@ -44,6 +44,9 @@ public class UserDAOTest
         
         User marge = new User(2, "marge","simpson", "marge", "**********");
         dao.insert(marge);
+
+        em.flush();
+        em.clear();
     }   
 
     @After
