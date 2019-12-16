@@ -27,41 +27,6 @@ public class IntegerConverterITCase
      	Assert.assertEquals("1111111111010010", bin);     		
     }
 
-    @Test
-    public void testRemoteConverterLoop() throws NamingException
-    {
-    	IntegerConverter converter = lookupEJB();
-    	
-    	String hex;
-    	for(int i=0; i<10; i++)
-    	{
-    		hex = converter.toBin(0xffd2);
-    		Assert.assertEquals("1111111111010010", hex);
-    	}
-    }
-    
-    /*
-     * Simulate many clients via threads
-     */
-    @Test
-    public void testRemoteConverterThreads() throws NamingException
-    {
-    	IntegerConverter converter = lookupEJB();
-    	
-    	for(int i=0; i<10; i++)
-    	{
-    		Thread t = new Thread(new Runnable() {
-    			public void run()
-    			{
-    				System.out.println("Thread " + Thread.currentThread().getId());
-    				String hex = converter.toBin(0xffd2);
-    	    		System.out.println(hex);
-    			}
-    		});
-    		t.start();
-    	}
-    }
- 
     private IntegerConverter lookupEJB() throws NamingException
     {
     	final Hashtable<String, String> jndiProperties = new Hashtable<String, String>();
