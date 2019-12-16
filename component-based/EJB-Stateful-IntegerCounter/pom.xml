@@ -9,17 +9,6 @@
 		
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-		<version.wildfly.maven.plugin>1.0.2.Final</version.wildfly.maven.plugin>
-		<version.wildfly>8.1.0.Final</version.wildfly>
-		<version.jboss.spec.javaee.7.0>1.0.0.Final</version.jboss.spec.javaee.7.0>
-
-		<version.compiler.plugin>3.1</version.compiler.plugin>
-		<version.exec.plugin>1.2.1</version.exec.plugin>
-		<version.war.plugin>2.1.1</version.war.plugin>
-
-		<maven.compiler.target>1.8</maven.compiler.target>
-		<maven.compiler.source>1.8</maven.compiler.source>
 	</properties>
 
 
@@ -28,7 +17,7 @@
 			<dependency>
 				<groupId>org.jboss.spec</groupId>
 				<artifactId>jboss-javaee-7.0</artifactId>
-				<version>${version.jboss.spec.javaee.7.0}</version>
+				<version>1.0.0.Final</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -36,7 +25,7 @@
 			<dependency>
 				<groupId>org.wildfly</groupId>
 				<artifactId>wildfly-ejb-client-bom</artifactId>
-				<version>${version.wildfly}</version>
+				<version>18.0.1.Final</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -96,12 +85,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.jboss.sasl</groupId>
-			<artifactId>jboss-sasl</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-
-		<dependency>
 			<groupId>org.jboss.marshalling</groupId>
 			<artifactId>jboss-marshalling-river</artifactId>
 			<scope>runtime</scope>
@@ -111,6 +94,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
+			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -128,22 +112,16 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${version.compiler.plugin}</version>
+				<version>3.1</version>
 				<configuration>
-					<source>${maven.compiler.source}</source>
-					<target>${maven.compiler.target}</target>
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.wildfly.plugins</groupId>
 				<artifactId>wildfly-maven-plugin</artifactId>
-				<version>1.0.2.Final</version>
-				<configuration>
-					<jbossHome>/home/student/install/wildfly-13.0.0.Final</jbossHome>
-					<port>9990</port>
-					<server-config>standalone.xml</server-config>
-					<filename>${project.build.finalName}.jar</filename>
-				</configuration>
+				<version>2.1.0.Beta1</version>
 			</plugin>
 		</plugins>
 	</build>
