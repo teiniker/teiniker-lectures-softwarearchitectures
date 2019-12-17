@@ -22,7 +22,7 @@ Print out the current thread ID to monitor the number of used threads.
 Run the server with:  
 	$ java -cp ./target/classes org.se.lab.HttpServerThreadPerRequest
 	
-and use the same test class to simulate client requests.
+and use either the browser or curl to simulate client requests.
 
 
 2. Thread-Pool Strategy
@@ -34,5 +34,5 @@ Print out the current thread ID to monitor the number of used threads.
 Run the server with: 
 	$ java -cp ./target/classes org.se.lab.HttpServerThreadPool
 	
-and use the same test class to simulate client requests.
+and use either the browser or curl to simulate client requests.
  
