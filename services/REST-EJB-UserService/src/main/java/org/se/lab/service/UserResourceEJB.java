@@ -47,7 +47,7 @@ public class UserResourceEJB
 
 	@PUT
 	@Path("{id}")
-	@Consumes("application/json")
+	@Consumes({"application/xml", "application/json"})
 	public void update(@PathParam("id") int id, UserDTO user)
 	{
 		LOG.info("update to " + user);
