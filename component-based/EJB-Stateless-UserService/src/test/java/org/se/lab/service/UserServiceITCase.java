@@ -77,4 +77,11 @@ public class UserServiceITCase
     		System.out.println(user);
     	}    	
     }
+
+    @Test
+    public void testAddUser()
+    {
+        service.addUser("homer", "ksShjd5123");
+    }
+
 }

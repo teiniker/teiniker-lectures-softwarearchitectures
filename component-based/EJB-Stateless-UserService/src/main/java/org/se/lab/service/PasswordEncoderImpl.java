@@ -1,18 +1,15 @@
 package org.se.lab.service;
 
+import javax.inject.Named;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-final class PasswordEncoder
+@Named
+class PasswordEncoderImpl
+    implements PasswordEncoder
 {
-    /*
-     * Don't create an instance of this class.
-     */
-    private PasswordEncoder() {}
-    
-    
-    public static byte[] convertToMD5Bytes(String s) 
+    public byte[] convertToMD5Bytes(String s)
         throws NoSuchAlgorithmException, UnsupportedEncodingException
     {
         if(s == null)
@@ -26,7 +23,7 @@ final class PasswordEncoder
     }
 
     
-    public static String convertToHexString(byte[] bytes)
+    public String convertToHexString(byte[] bytes)
     {
         if(bytes == null)
             throw new IllegalArgumentException();
@@ -40,7 +37,7 @@ final class PasswordEncoder
         return hex.toString();
     }
     
-    public static String convertToMD5String(String s)
+    public String convertToMD5String(String s)
     {        
         if(s == null)
             throw new IllegalArgumentException();

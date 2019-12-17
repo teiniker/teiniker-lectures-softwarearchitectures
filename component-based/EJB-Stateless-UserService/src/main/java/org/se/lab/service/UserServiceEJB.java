@@ -9,8 +9,6 @@ import javax.inject.Inject;
 import org.jboss.logging.Logger;
 import org.se.lab.data.User;
 import org.se.lab.data.UserDAO;
-import javax.ejb.Remote;
-import javax.ejb.Stateless;
 
 @Stateless
 @Remote(UserService.class)
@@ -21,7 +19,10 @@ public class UserServiceEJB
 	
 	@Inject
 	private UserDAO dao;
-		
+
+	@Inject
+	private PasswordEncoder enc;
+
 	public UserServiceEJB()
 	{
 		LOG.info(UserServiceEJB.class.getName() + "() " + this);
@@ -31,7 +32,7 @@ public class UserServiceEJB
 	public void addUser(String username, String password)
 	{
 		LOG.info("addUser( " + username + ")");
-		String md5Password = PasswordEncoder.convertToMD5String(password);
+		String md5Password = enc.convertToMD5String(password);
 		dao.createUser(username, md5Password);
 	}
 
