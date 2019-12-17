@@ -5,7 +5,6 @@
 	<artifactId>REST-EJB-UserService-Connector-XML</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-
 	<build>
 		<plugins>
 			<plugin>
@@ -39,6 +38,20 @@
 	</build>
 
 	<dependencies>
+		<!-- API -->
+		<dependency>
+			<groupId>jakarta.xml.bind</groupId>
+			<artifactId>jakarta.xml.bind-api</artifactId>
+			<version>2.3.2</version>
+		</dependency>
+
+		<!-- Runtime -->
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>2.3.2</version>
+		</dependency>
+
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
