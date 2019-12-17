@@ -20,8 +20,7 @@ public class EncodingTask
 		binaryFile = new File(inputFile);
 		base64File = new File(outputFile);
 	}
-	
-	
+
 	private File binaryFile;  
 	private File base64File;
 	
