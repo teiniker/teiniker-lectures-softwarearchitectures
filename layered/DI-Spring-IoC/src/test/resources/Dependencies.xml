@@ -12,7 +12,7 @@
 	</bean>
 	
 	<bean id="personService" class="org.se.lab.service.PersonServiceImpl">
-		<property name="dao" ref="personDAO"/>
+		<property name="dao" ref="personDAOlogger"/>
 	</bean>
 	
 	<bean id="personHelper" class="org.se.lab.presentation.PersonViewHelper">
