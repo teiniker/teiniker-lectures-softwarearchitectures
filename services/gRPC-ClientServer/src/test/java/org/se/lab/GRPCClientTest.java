@@ -2,10 +2,12 @@ package org.se.lab;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import org.junit.Test;
 
-public class GRPCClient
+public class GRPCClientTest
 {
-    public static void main(String[] args)
+    @Test
+    public void testHelloService()
     {
         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8080)
                 .usePlaintext()
