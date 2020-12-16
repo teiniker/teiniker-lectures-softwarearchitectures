@@ -44,7 +44,6 @@ To see how the routing is configured, review the `src/main/resources/application
 file:
 ```
 zuul.routes.retail.url=http://localhost:8080
-zuul.routes.token.url=http://localhost:8085
 zuul.sensitiveHeaders=
 ribbon.eureka.enabled=false
 server.port=9090
