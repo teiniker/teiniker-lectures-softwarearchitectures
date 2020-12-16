@@ -13,15 +13,14 @@ public class GRPCClientTest
                 .usePlaintext()
                 .build();
 
-        HelloServiceGrpc.HelloServiceBlockingStub stub
-                = HelloServiceGrpc.newBlockingStub(channel);
+        HelloServiceGrpc.HelloServiceBlockingStub stub = HelloServiceGrpc.newBlockingStub(channel);
 
         HelloResponse helloResponse = stub.hello(HelloRequest.newBuilder()
                 .setFirstName("Homer")
                 .setLastName("Simpson")
                 .build());
 
-        System.out.println("Response received from server:\n" + helloResponse);
+        System.out.println("Response received from server:\n" + helloResponse.getGreeting());
 
         channel.shutdown();
     }
