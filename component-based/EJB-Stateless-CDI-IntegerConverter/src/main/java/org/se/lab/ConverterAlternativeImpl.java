@@ -14,7 +14,7 @@ public class ConverterAlternativeImpl
 	@Override
 	public String convertIntegerToHexString(int value)
 	{
-		LOG.info("onvertIntegerToHexString(" + value + ")");		
+		LOG.info("convertIntegerToHexString(" + value + ")");
 		return String.format("%04x", value);
 	}
 	
