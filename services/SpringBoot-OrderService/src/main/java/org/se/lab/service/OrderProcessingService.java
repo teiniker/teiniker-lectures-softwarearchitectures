@@ -15,7 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/orders")
-public class OrderProcessingService {
+public class OrderProcessingService
+{
 
     private Map<String, Order> orders = new HashMap<>();
 
