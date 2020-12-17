@@ -1,5 +1,45 @@
 # Spring Boot: OrderService 
 
+Spring Boot provides a very good support to building RESTful Web Services.
+```Java
+@RestController
+@RequestMapping("/orders")
+public class OrderProcessingService 
+{
+    @PostMapping
+    public ResponseEntity<Order> placeOrder(@RequestBody Order order)
+    {
+        //...
+        return new ResponseEntity<Order>(order, HttpStatus.CREATED);
+    }
+    
+    @GetMapping("/{id}")
+    public ResponseEntity<Order> getOrder(@PathVariable String id) 
+    {
+        //...
+        return new ResponseEntity<Order>(orders.get(id), HttpStatus.OK);
+    }
+}
+```
+The following annotations can be used:
+* The **@RestController** annotation is used to define the RESTful web services.
+* The **@RequestMapping** annotation is used to define the Request URI to access the REST Endpoints.
+
+* The **@GetMapping** annotation maps HTTP GET requests onto specific handler methods. 
+    It is a composed annotation that acts as a shortcut for `@RequestMapping(method = RequestMethod.GET)`.
+* The **@PostMapping** annotation maps HTTP POST requests onto specific handler methods. 
+   It is a composed annotation that acts as a shortcut for `@RequestMapping(method = RequestMethod.POST)`.
+* The  @PutMapping annotation maps HTTP PUT requests onto specific handler methods. 
+    It is a composed annotation that acts as a shortcut for `@RequestMapping(method = RequestMethod.PUT)`.
+* The **@DeleteMapping** annotation maps HTTP DELETE requests onto specific handler methods. 
+    It is a composed annotation that acts as a shortcut for `@RequestMapping(method = RequestMethod.DELETE)`.
+
+* The **@PathVariable** annotation is used to define the custom or dynamic request URI. 
+   The Path variable in request URI is defined as curly braces {}.
+* The **@RequestParam** annotation is used to read the request parameters from the Request URL. 
+* The **@RequestBody** annotation is used to define the request body content type.
+
+
 We start with a **simple microservice**:
 ```
 $ mvn spring-boot:run
@@ -7,7 +47,7 @@ $ mvn spring-boot:run
 
 We can send a **HTTP POST request**:
 ```
-$ curl -v http://localhost:8080/orders -H 'Content-Type: application/json' --data-binary @- <<EOF
+$ curl -i http://localhost:8080/orders -H 'Content-Type: application/json' --data-binary @- <<EOF
 {
 "items":[
     {
