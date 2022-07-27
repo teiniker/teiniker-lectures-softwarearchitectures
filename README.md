@@ -11,19 +11,11 @@ You can find examples for the following software architectural styles:
   * Remote Facade
   * Data Transfer Object (DTO)
   
-2. [Component-Based Architectures](https://github.com/teiniker/teiniker-lectures-softwarearchitectures/tree/master/component-based) 
-  * Component & Container
-  * Session Component
-  * Instance Pooling 
-
-3. [Service-Oriented Architectures](https://github.com/teiniker/teiniker-lectures-softwarearchitectures/tree/master/services)
+2. [Microservice Architectures](https://github.com/teiniker/teiniker-lectures-softwarearchitectures/tree/master/services)
   * RPC API Stype
   * Resource API Stype
   * Consumer-Driven Contracts
   * API Gateway
-
-Finally, a section related to [Java Web Programming](https://github.com/teiniker/teiniker-lectures-softwarearchitectures/tree/master/web-applications)
-can be found. 
 
 See also: 
 [Software Design by Example](https://github.com/teiniker/teiniker-lectures-softwaredesign) 
@@ -31,4 +23,4 @@ See also:
 As a development environment, you can use a pre-configured Linux VM image:
 [Virtual Lab](https://drive.google.com/drive/folders/1AzsF4Mvh1HJ8k6OW5W5hQ5CF0HdqA51l)
 
-*Egon Teiniker, 2019, GPL v3.0*
+*Egon Teiniker, 2019-2022, GPL v3.0*
