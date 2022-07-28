@@ -66,6 +66,7 @@ date: Fri, 06 Nov 2020 09:46:48 GMT
     </user>
 </collection>
 
+Authorization: Basic c3R1ZGVudDpzdHVkZW50
 
 
 How to use Authentication in SoapUI?

@@ -18,7 +18,7 @@ You can review the class UUIDTest to see how to generate a random UUID!
 
 Use SoapUI to test your refactorings:
 
-URL: http://localhost:8080/REST-EJB-UserService-UUID-Exercise/v1/users
+URL: http://localhost:8080/REST-UserService-UUID-Exercise/v1/users
                            
 1) Insert the following users
 -----------------------------
