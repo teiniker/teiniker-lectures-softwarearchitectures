@@ -89,4 +89,4 @@ Application data can be added to a **Model** object, to making it accessible to 
 
 * Mark Heckler. **Spring Boot: Up and Running**. O'Reilly Media, 2021
 
-*Egon Teiniker, 2017 - 2022, GPL v3.0*
+*Egon Teiniker, 2017-2023, GPL v3.0*
