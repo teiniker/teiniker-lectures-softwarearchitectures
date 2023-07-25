@@ -22,7 +22,7 @@ public class UserServiceTest
 	@Before
 	public void setup() throws ClassNotFoundException, SQLException  
 	{		
-		JDBC_HELPER.executeSqlScript("src/test/resources/sql/createUserTable.sql");
+		JDBC_HELPER.executeSqlScript("src/test/resources/sql/setup.sql");
 		connection = JDBC_HELPER.getConnection();
 		
 		ServiceFactory factory = new ServiceFactory();		
@@ -36,7 +36,7 @@ public class UserServiceTest
 	@After
 	public void teardown() throws SQLException
 	{		        
-		JDBC_HELPER.executeSqlScript("src/test/resources/sql/dropUserTable.sql");
+		JDBC_HELPER.executeSqlScript("src/test/resources/sql/teardown.sql");
 		connection.close();
 	}
 
