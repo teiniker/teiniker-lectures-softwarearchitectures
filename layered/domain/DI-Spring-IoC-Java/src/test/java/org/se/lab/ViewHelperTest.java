@@ -49,5 +49,7 @@ public class ViewHelperTest
         String table = helper.getPersonTable();
         System.out.println(table);
         assertEquals(html, table);
+
+		context.close();
     }
 }
