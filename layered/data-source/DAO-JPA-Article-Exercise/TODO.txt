@@ -1,0 +1,33 @@
+Exercise: Data Access Object (unsing JPA)
+-------------------------------------------------------------------------------
+
+Sie haben eine Datenklasse "Article" gegeben, und sollen diese in eine Entity
+umwandeln und dafür ein DAO implementieren.
+
+A) Entity
+Erweitern Sie die gegebene Klasse "Article" um die nötigen Annotationen, damit
+sie als Entity für das JPA Framework verwendet werden kann.
+Tipp: Verwenden Sie eine automatisch generierte ID.
+
+B) ArticleDAO
+Schreiben Sie ein Interface, das die folgenden Operationen definiert:
+
+	Article insert(Article user);
+	Article update(Article user);
+	void delete(Article user);
+
+	Article findById(int id);
+	List<Article> findAll();
+
+    Article createArticle(String description, long price);
+
+C) ArticleDaoImpl
+Schreiben Sie die Klasse "ArticleDaoImpl", die das "ArticleDAO"
+Interface mit Hilfe von JPA (EntityManager) implementiert.
+
+Testen Sie Ihre Implementierung mit der Klasse "ArticleDaoTest".
+
+Tipp: Um den MariaDB Server zu starten, verwenden Sie folgendes Kommando:
+    $ sudo systemctl start mariadb.service
+
+Tipp: Die Konfigurationen in "persistence.xml" sind bereits vorhanden.
