@@ -26,7 +26,7 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.0</version>
 				<configuration>
-					<release>11</release>
+					<release>17</release>
 				</configuration>
 			</plugin>
 
@@ -56,6 +56,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>3.4.0</version>
 				<executions>
 					<execution>
 						<id>add-source</id>
@@ -81,13 +82,6 @@
 					<descriptorRefs>
 						<descriptorRef>jar-with-dependencies</descriptorRef>
 					</descriptorRefs>
-					<!--
-					<archive>
-						<manifest>
-							<mainClass>fully qualified main class name</mainClass>
-						</manifest>
-					</archive>
-					-->
 				</configuration>
 
 				<executions>
