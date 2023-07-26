@@ -1,0 +1,36 @@
+Exercise: SpringBoot REST Service (Books)
+-------------------------------------------------------------------------------
+
+Sie haben eine Datenklasse "Book" gegeben.
+Erstellen Sie ein REST Service mit dem Instanzen von "Book" als Ressourcen
+verwaltet werden können.
+
+Ergänzen Sie eine Klasse "BookController", die "Book" instanzen in einer Map
+verwaltet (als Ersatz für einen Datenbank-Zugriff).
+
+A) curl -i http://localhost:8080/books
+Gibt alle "Book" Instanzen zurück, zusammen mit dem Status 200.
+
+B) curl -i http://localhost:8080/books/2
+Gibt die "Book" Instanz mit der "id" 2 zurück, zusammen mit dem Status 200.
+Wenn die gegebene "id" nicht gefunden wird, wird der Status 404 zurückgegeben.
+
+C) curl -i -X POST http://localhost:8080/books -H 'Content-type:application/json' -d '{"author":"Robert C. Martin","title":"Clean Code","isbn":"978-0132350884"}'
+Füge eine Instanz von "Book" in die Map ein und vergib dabei einen neuen
+Wert für die "id".
+Die "Book" Instanz wird mit der "id" im Body zurück gegeben, zusammen mit dem
+Status 201.
+
+D) curl -i -X PUT http://localhost:8080/books/1 -H 'Content-type:application/json' -d '{"author":"Joshua Bloch","title":"Effective Java, 2nd Edition","isbn":"978-0134685991"}'
+Überschreibe die gespeicherte Instanz von "Book" mit den übergebenen Werten.
+Die "Book" Instanz mit den aktuellen Werten wird im Body zurück gegeben,
+zusammen mit dem Status 200.
+Wenn die gegebene "id" nicht gefunden wird, wird der Status 404 zurückgegeben.
+
+E) curl -i -X DELETE http://localhost:8080/books/2
+Lösche die "Book" Instanz mit der gegebenen "id" aus der Map und gib den
+Status 204 zurück.
+Wenn die gegebene "id" nicht gefunden wird, wird der Status 404 zurückgegeben.
+
+Tipp: Verwende die gegebenen "curl" Statements um die Implementierungen
+zu testen.
