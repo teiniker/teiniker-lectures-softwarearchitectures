@@ -64,8 +64,8 @@ class UserServiceImpl // package private
 		try
 		{
 			txBegin();
-			hashValue = PasswordEncoder.toHashValue(password);
-			getUserDAO().createUser(firstName,lastName, username, hashValue);
+				hashValue = PasswordEncoder.toHashValue(password);
+				getUserDAO().createUser(firstName,lastName, username, hashValue);
 			txCommit();
 		}
 		catch(DAOException e)
@@ -96,8 +96,8 @@ class UserServiceImpl // package private
 			int id = Integer.valueOf(idString);
 			
 			txBegin();
-			User u = getUserDAO().findById(id);
-			getUserDAO().delete(u);
+				User u = getUserDAO().findById(id);
+				getUserDAO().delete(u);
 			txCommit();
 		}
         catch(DAOException e)
@@ -123,7 +123,7 @@ class UserServiceImpl // package private
 		try
 		{
 			txBegin();
-			users = getUserDAO().findAll();
+				users = getUserDAO().findAll();
 			txCommit();
 		}
         catch(DAOException e)
