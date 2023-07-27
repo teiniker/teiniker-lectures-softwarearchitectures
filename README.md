@@ -12,10 +12,13 @@ You can find examples for the following software architectural styles:
   * Data Transfer Object (DTO)
   
 2. [Microservice Architectures](https://github.com/teiniker/teiniker-lectures-softwarearchitectures/tree/master/services)
-  * RPC API Stype
-  * Resource API Stype
-  * Consumer-Driven Contracts
-  * API Gateway
+  * API Styles 
+    * RPC API
+    * Resource API
+  * API Design
+    * Service Descriptor
+    * Web Service Evolution
+    * API Gateway
 
 See also: 
 [Software Design by Example](https://github.com/teiniker/teiniker-lectures-softwaredesign) 
