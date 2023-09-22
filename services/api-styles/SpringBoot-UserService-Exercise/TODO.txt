@@ -1,0 +1,58 @@
+Übungsbeispiel 2B: REST Service
+-------------------------------------------------------------------------------
+
+Implementieren Sie ein REST Service für die Resource "User".
+
+1) UserController [6 Punkte]
+Ergänzen Sie die fehlenden Methoden im "UserController", damit die folgenden
+curl Statements funktionieren:
+
+$ curl -i http://localhost:8080/users => 200
+$ curl -i http://localhost:8080/users/2 => 200
+$ curl -i http://localhost:8080/users/666 => 404
+$ curl -i -X POST http://localhost:8080/users -H 'Content-type:application/json' -d '{"username":"maggy","password":"055e7e7d9c267763a5e25b86c6cd0dd5231e991ca12bdd156da17b9730ebb344"}' => 201
+$ curl -i -X PUT http://localhost:8080/users/1 -H 'Content-type:application/json' -d '{"id":1,"username":"homer","password":"duffbeer"}' => 200
+$ curl -i -X DELETE http://localhost:8080/users/2 => 204
+
+2) Versionierung [2 Punkte]
+Fügen Sie in den Web Service Path noch eine Versionierung ein: api/v1
+
+$ curl -i http://localhost:8080/api/v1/users => 200
+$ curl -i http://localhost:8080/api/v1/users/2 => 200
+$ curl -i http://localhost:8080/api/v1/users/666 => 404
+$ curl -i -X POST http://localhost:8080/api/v1/users -H 'Content-type:application/json' -d '{"username":"maggy","password":"055e7e7d9c267763a5e25b86c6cd0dd5231e991ca12bdd156da17b9730ebb344"}' => 201
+$ curl -i -X PUT http://localhost:8080/api/v1/users/1 -H 'Content-type:application/json' -d '{"id":1,"username":"homer","password":"duffbeer"}' => 200
+$ curl -i -X DELETE http://localhost:8080/api/v1/users/2 => 204
+
+3) Swagger UI [2 Punkte]
+Fügen Sie dem Web Service noch ein Swagger UI hinzu, damit Sie das Service
+bequem testen können.
+
+
+Allgemeines
+---------------------------------------------------------------------
+
+1. Project Name
+	Nennen Sie das Projekt (und das abgegebene ZIP File) so um, dass
+	statt "MyName" ihr Name verwendet wird.
+
+2. Compiler Errors
+	Implementierungen die nicht kompilieren werden mit 0 Punkten bewertet.
+	Ausgenommen sind Code-Teile die bereits im Projekt vorhanden sind
+	(z.B.: Tests kompilieren nicht, weil die zu testenden Klassen nicht
+	implementiert wurden).
+
+3. Automatisierte Tests
+    Implementierungen deren automatische Tests nicht durchlaufen werden
+    ebenfalls mit 0 Punkten bewertet - die geforderte Funktionalität ist
+    nicht vorhanden.
+
+4. Manuelle Reviews
+	Bei der Notenvergabe wird für jede Lösung ein manuelles Code-Review
+	durchgeführt. Die automatischen Tests sollen den Lösungsweg aufzeigen
+	und in der Umsetzung Feedback geben. Funktionale Tests können aber nicht
+	sicherstellen, dass die Implementierungs- und Design-Strukturen eingehalten
+	wurden. Es ist daher auch möglich, trotz laufender Tests Punkteabzüge zu
+	bekommen. Die Punkteabzüge können in einer Einsichtnahme besprochen werden.
+
+5. Offensichtlich gleiche Lösungen werden mit 0 Punkten beurteilt.
