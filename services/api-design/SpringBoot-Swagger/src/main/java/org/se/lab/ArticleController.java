@@ -22,6 +22,7 @@ public class ArticleController
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "ok, successful operation"),
             @ApiResponse(responseCode = "404", description = "Not found")})
+
     @GetMapping("/articles")
     List<Article> all()
     {
