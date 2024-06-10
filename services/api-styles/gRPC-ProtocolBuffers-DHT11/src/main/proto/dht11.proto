@@ -1,0 +1,11 @@
+syntax = "proto3";
+option java_multiple_files = true;
+
+package org.se.lab;
+
+message DHT11
+{
+    int32 temperature  = 1;
+    int32 humidity = 2;
+}
+
