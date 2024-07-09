@@ -2,7 +2,6 @@ package org.se.lab;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
@@ -11,21 +10,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
-
-class JdbcTestHelper 
+class JdbcTestHelper
 {
 	public static final String SQL_STATEMENT_DELIMITER = ";";
 	
-	private String driver;
-    private String url;
-    private String user;
-    private String password;  
+	private final String driver;
+    private final String url;
+    private final String user;
+    private final String password;
 	
-    
-    /*
-     * Constructors
-     */
-    
+    // Constructors
+
     public JdbcTestHelper()
     {
     	this("jdbc.properties");
@@ -33,7 +28,7 @@ class JdbcTestHelper
     
     public JdbcTestHelper(String propertyFileName) 
     {
-    	if(propertyFileName == null || propertyFileName.length() == 0)
+    	if(propertyFileName == null || propertyFileName.isEmpty())
     		throw new IllegalArgumentException("Invalid property file name!");
     	    	
         try
@@ -50,21 +45,16 @@ class JdbcTestHelper
 			throw new IllegalStateException("Unable to load " + propertyFileName + "!");
 		}
     }
-    
 
-    /*
-     * Public Methods
-     */
-    
-    
+
+    // Public Methods
+
     /**
      * Read a SQL script and execute each SQL statement.
-     * 
-     * @param sqlScriptFileName
      */
     public void executeSqlScript(String sqlScriptFileName)
 	{
-    	if(sqlScriptFileName == null || sqlScriptFileName.length() == 0)
+    	if(sqlScriptFileName == null || sqlScriptFileName.isEmpty())
     		throw new IllegalArgumentException("Invalid SQL script file name!");
 
 		try
@@ -75,66 +65,41 @@ class JdbcTestHelper
 		}
 		catch(Exception e)
 		{
-			throw new RuntimeException("Can't execute SQL script: " + e.getMessage());
+			throw new IllegalStateException("Can't execute SQL script!", e);
 		}
 	}
 
 	    
     /**
      * Executes a single SQL statement given by a string parameter.
-     * 
-     * @param sqlStatement
-     * @throws ClassNotFoundException
-     * @throws SQLException
-     * @throws FileNotFoundException
-     * @throws IOException
      */
     public void executeSqlStatement(String sqlStatement) 
-    	throws ClassNotFoundException, SQLException, FileNotFoundException, IOException
     {
-    	if(sqlStatement == null || sqlStatement.length() == 0)
-    		throw new IllegalArgumentException("Empty sqlStatement!");
+    	if(sqlStatement == null || sqlStatement.isEmpty())
+    		throw new IllegalArgumentException("Invalid SQL statement!");
     	
-    	Connection con = null;
-    	Statement st = null;
-    	try
+    	try (Connection con = getConnection(); Statement st = con.createStatement())
     	{
-    		con = getConnection();
-    		st = con.createStatement();            
-    		st.execute(sqlStatement);            
+    		st.execute(sqlStatement);
     	}
-    	finally
-    	{
-    		if(st != null) 
-    			st.close();
-    		if(con != null)
-    			con.close();
-    	}
+		catch (SQLException e)
+        {
+            throw new IllegalStateException("Can't execute SQL statement!" ,e);
+        }
     }
     
     
     /**
      * Executes a sequence of SQL statements given by a string array parameter.
-     * 
-     * @param sqlStatements
-     * @throws SQLException
-     * @throws FileNotFoundException
-     * @throws IOException
-     * @throws ClassNotFoundException
      */
     public void executeSqlStatements(String[] sqlStatements) 
-    	throws SQLException, FileNotFoundException, IOException, ClassNotFoundException 
     {
     	if(sqlStatements == null)
-    		throw new IllegalArgumentException("Empty sqlStatement array!");
-    	
-    	Connection con = null;
-    	Statement st = null;
-    	try
+    		throw new IllegalArgumentException("Invalid SQL statement array!");
+
+    	try (Connection con = getConnection(); Statement st = con.createStatement())
     	{
-    		con = getConnection();
     		con.setAutoCommit(false);
-    		st = con.createStatement();            
     		for(String sqlStatement : sqlStatements)
     		{
     			System.out.println("SQL> " + sqlStatement);
@@ -142,20 +107,12 @@ class JdbcTestHelper
     		}
     		con.commit();
     	}
-    	finally
-    	{
-    		if(st != null) 
-    			st.close();
-    		if(con != null) 
-    		{
-    			con.rollback();
-    			con.close();
-    		}
-    	}
+		catch (SQLException e)
+        {
+            throw new IllegalStateException("Can't execute SQL statements!", e);
+        }
     }
 
-    
-    
     /*
      * Utility Methods
      */
@@ -163,47 +120,42 @@ class JdbcTestHelper
     
     /**
      * Load an SQL script and eliminate comment lines.
-     * 
-     * @param sqlScriptFileName
-     * @return
-     * @throws IOException
      */
     protected String loadSqlScript(String sqlScriptFileName) 
-    throws IOException
     {
-    	if(sqlScriptFileName == null || sqlScriptFileName.length() == 0)
+    	if(sqlScriptFileName == null || sqlScriptFileName.isEmpty())
     		throw new IllegalArgumentException("Invalid SQL script file name!");
-    	
-    	BufferedReader in = new BufferedReader(new FileReader(sqlScriptFileName));
-    	StringBuilder buffer = new StringBuilder();
-    	String line;
-    	while((line = in.readLine()) != null)
-    	{
-    		if(isCommentLine(line))
-    			continue;
-    		buffer.append(line.trim());
-    	}
-    	in.close();
-    	return buffer.toString();    
+
+		try (BufferedReader in = new BufferedReader(new FileReader(sqlScriptFileName)))
+		{
+			StringBuilder buffer = new StringBuilder();
+			String line;
+			while ((line = in.readLine()) != null)
+			{
+				if (isCommentLine(line))
+					continue;
+				buffer.append(line.trim());
+			}
+			in.close();
+			return buffer.toString();
+		}
+		catch (IOException e)
+        {
+            throw new IllegalStateException("Can't load SQL script", e);
+        }
     }
     
     
     /**
      * Check if a given line is a SQL comment.
-     * 
-     * @param line
-     * @return
      */
     protected boolean isCommentLine(String line)
     {
-    	if(line == null || line.length() == 0)
+    	if(line == null || line.isEmpty())
     		return false;
     	
     	String comment = line.trim(); 
-    	if(comment.startsWith("--") || comment.startsWith("//"))
-    		return true;
-    	else
-    		return false;    	
+    	return (comment.startsWith("--") || comment.startsWith("//"));
     }
     
     
@@ -211,17 +163,18 @@ class JdbcTestHelper
     /**
      * Establish a JDBC connection to a database as defined by the driver, 
      * url, user and password fields.
-     *   
-     * @return
-     * @throws ClassNotFoundException
-     * @throws SQLException
      */
-    protected Connection getConnection() 
-    	throws ClassNotFoundException, SQLException 
+    protected Connection getConnection()
     {
-        Class.forName(driver);
-        Connection con = DriverManager.getConnection(url, user, password);
-        return con;
+		try
+		{
+			Class.forName(driver);
+			return DriverManager.getConnection(url, user, password);
+		}
+		catch (SQLException | ClassNotFoundException e)
+        {
+            throw new IllegalStateException("Can't establish connection to the database!", e);
+        }
     }
 
     
@@ -229,21 +182,41 @@ class JdbcTestHelper
      * Tx handling methods
      */
 	
-    protected void txBegin(Connection c) throws SQLException
+    public void txBegin(Connection c)
     {
-        c.setAutoCommit(false);
+		try
+		{
+			c.setAutoCommit(false);
+		}
+		catch (SQLException e)
+		{
+			throw new IllegalStateException("Can't begin transaction!", e);
+		}
     }
 
-    protected void txCommit(Connection c) throws SQLException
+    public void txCommit(Connection c)
     {
-        c.commit();
-        c.setAutoCommit(true);
-    }
+		try
+		{
+        	c.commit();
+        	c.setAutoCommit(true);
+		}
+		catch (SQLException e)
+		{
+			throw new IllegalStateException("Can't commit transaction!", e);
+		}
+	}
 
-    protected void txRollback(Connection c) throws SQLException
+    public void txRollback(Connection c)
     {
-        c.rollback();
-        c.setAutoCommit(true);
-    }
-
+		try
+		{
+        	c.rollback();
+        	c.setAutoCommit(true);
+		}
+		catch (SQLException e)
+		{
+			throw new IllegalStateException("Can't rollback transaction!", e);
+		}
+	}
 }
