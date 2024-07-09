@@ -12,26 +12,31 @@ import org.apache.log4j.Logger;
 
 
 public class UserDAOImpl 
-	extends AbstractDAOImpl
 	implements UserDAO
 {
 	private final Logger logger = Logger.getLogger(UserDAOImpl.class);
 
-	/*
-	 * Constructor
-	 */
-	
+	// Constructor
 	public UserDAOImpl(Connection connection)
 	{
 		logger.debug("UserDAOImpl(" + connection + ")");
-		
 		setConnection(connection);
 	}
 
-	
-	/*
-	 * DAO operations
-	 */
+	// Dependency: ---[1]-> connection:Connection
+	private Connection connection;
+	protected final Connection getConnection()
+	{
+		return connection;
+	}
+	public final void setConnection(final Connection connection)
+	{
+		if (connection == null)
+			throw new IllegalArgumentException("connection");
+		this.connection = connection;
+	}
+
+	// DAO operations
 
 	public void insert(User user)
 	{
@@ -42,11 +47,9 @@ public class UserDAOImpl
 
 		final String SQL = "INSERT INTO user VALUES (NULL,?,?,?,?)";
 		logger.debug("SQL> " + SQL);
-		PreparedStatement pstmt = null;
 
-		try
+		try (PreparedStatement pstmt = getConnection().prepareStatement(SQL))
 		{
-			pstmt = getConnection().prepareStatement(SQL);
 			pstmt.setString(1, user.getFirstname());
 			pstmt.setString(2, user.getLastname());
 			pstmt.setString(3, user.getUsername());
@@ -57,10 +60,6 @@ public class UserDAOImpl
 		{
 			throw new DAOException("insert failure", e);
 		} 
-		finally
-		{
-			closePreparedStatement(pstmt);
-		}
 	}
 
 	public void update(User user)
@@ -73,11 +72,9 @@ public class UserDAOImpl
 		final String SQL = "UPDATE user SET firstname=?, lastname=?, "
 				+ "username=?, password=? WHERE id=?";
 		logger.debug("SQL> " + SQL);
-		PreparedStatement pstmt = null;
 
-		try
+		try (PreparedStatement pstmt = getConnection().prepareStatement(SQL))
 		{
-			pstmt = getConnection().prepareStatement(SQL);
 			pstmt.setString(1, user.getFirstname());
 			pstmt.setString(2, user.getLastname());
 			pstmt.setString(3, user.getUsername());
@@ -87,12 +84,8 @@ public class UserDAOImpl
 		} 
 		catch (SQLException e)
 		{
-			throw new DAOException("update failure", e);
+			throw new DAOException("Can't update User!", e);
 		} 
-		finally
-		{
-			closePreparedStatement(pstmt);
-		}
 	}
 
 	
@@ -102,21 +95,16 @@ public class UserDAOImpl
 		
 		final String SQL = "DELETE FROM user WHERE ID = ?";
 		logger.debug("SQL> " + SQL);
-		PreparedStatement pstmt = null;
-		try
+
+		try (PreparedStatement pstmt = getConnection().prepareStatement(SQL))
 		{
-			pstmt = getConnection().prepareStatement(SQL);
 			pstmt.setLong(1, user.getId());
 			pstmt.executeUpdate();
 		} 
 		catch (SQLException e)
 		{
-			throw new DAOException("update failure", e);
+			throw new DAOException("Can't delete User!", e);
 		} 
-		finally
-		{
-			closePreparedStatement(pstmt);
-		}
 	}
 
 	public User findById(int id) 
@@ -125,32 +113,26 @@ public class UserDAOImpl
 		
 		final String SQL = "SELECT * FROM user WHERE id=? ";
 		logger.debug("SQL> " + SQL);
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		User user = null;
-		try
+
+		// When a Statement object is closed, its current ResultSet object,
+		// if one exists, is also closed.
+		try (PreparedStatement pstmt = getConnection().prepareStatement(SQL))
 		{
-			pstmt = getConnection().prepareStatement(SQL);
 			pstmt.setLong(1, id);
-			rs = pstmt.executeQuery();
+			ResultSet rs = pstmt.executeQuery();
 			rs.next();
-			user = new User();
+			User user = new User();
 			user.setId(rs.getInt("id"));
 			user.setFirstname(rs.getString("firstname"));
 			user.setLastname(rs.getString("lastname"));
 			user.setUsername(rs.getString("username"));
 			user.setPassword(rs.getString("password"));
-		} 
+			return user;
+		}
 		catch (SQLException e)
 		{
-			throw new DAOException("update failure", e);
+			throw new DAOException("Can't find User", e);
 		} 
-		finally
-		{
-			closeResultSet(rs);
-			closePreparedStatement(pstmt);
-		}
-		return user;
 	}
 
 	
@@ -160,15 +142,11 @@ public class UserDAOImpl
 		
 		final String SQL = "SELECT * FROM user";
 		logger.debug("SQL> " + SQL);
-		Statement stmt = null;
-		ResultSet rs = null;
-		List<User> users = new ArrayList<User>();
 
-		try
+		try (Statement stmt = getConnection().createStatement())
 		{
-			stmt = getConnection().createStatement();
-			rs = stmt.executeQuery(SQL);
-
+			ResultSet rs = stmt.executeQuery(SQL);
+			List<User> users = new ArrayList<>();
 			while (rs.next())
 			{
 				int id = rs.getInt("id");
@@ -184,20 +162,14 @@ public class UserDAOImpl
 				user.setPassword(password);
 				users.add(user);
 			}
+			return users;
 		} 
 		catch (SQLException e)
 		{
-			throw new DAOException("update failure", e);
-		} 
-		finally
-		{
-			closeResultSet(rs);
-			closeStatement(stmt);
+			throw new DAOException("Can't find any User!", e);
 		}
-		return users;
 	}
-	
-	
+
 	public User createUser(String firstName, String lastName, String username, String password)
 	{
 		User u = new User();
