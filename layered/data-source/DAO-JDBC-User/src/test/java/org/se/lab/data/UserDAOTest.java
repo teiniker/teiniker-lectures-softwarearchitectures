@@ -30,7 +30,7 @@ public class UserDAOTest
 	}
 	
 	@Before
-	public void setup() throws ClassNotFoundException, SQLException  
+	public void setup()
 	{
 		connection = JDBC_HELPER.getConnection();
 		dao = new UserDAOImpl(connection);
@@ -76,6 +76,5 @@ public class UserDAOTest
 		
 		User result = dao.findById(4);
 		Assert.assertEquals("marge", result.getUsername());
-		
 	}
 }
