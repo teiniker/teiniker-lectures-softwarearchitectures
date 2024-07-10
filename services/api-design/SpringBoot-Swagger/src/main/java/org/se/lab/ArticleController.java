@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/articles")
+@RequestMapping("articles")
 public class ArticleController
 {
     private final ArticleRepository repository;
@@ -22,7 +22,6 @@ public class ArticleController
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "ok, successful operation"),
             @ApiResponse(responseCode = "404", description = "Not found")})
-
     @GetMapping("/articles")
     List<Article> all()
     {

@@ -13,9 +13,9 @@ Besides generating the OpenAPI 3 specification itself, we can integrate `springd
 
 ```
 <dependency>
-    <groupId>org.springdoc</groupId>
-    <artifactId>springdoc-openapi-ui</artifactId>
-    <version>1.5.2</version>
+   <groupId>org.springdoc</groupId>
+   <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+   <version>2.0.2</version>
 </dependency>
 ```
 
@@ -60,7 +60,7 @@ We can add some description to our API using some of **OpenAPI-specific annotati
 ## OpenAPI Specification
 The **OpenAPI** descriptions will be available at the path `/v3/api-docs` by default:
 ```
-http://localhost:8080/v3/api-docs/
+http://localhost:8080/v3/api-docs
 http://localhost:8080/v3/api-docs.yaml
 ```
 
@@ -77,4 +77,4 @@ springdoc.api-docs.path=/api-docs
 
 * [swagger-annotations API](https://javadoc.io/doc/io.swagger.core.v3/swagger-annotations/latest/index.html)
 
-*Egon Teiniker, 2016-2023, GPL v3.0*
+*Egon Teiniker, 2017-2024, GPL v3.0*
