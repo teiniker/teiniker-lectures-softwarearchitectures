@@ -1,6 +1,6 @@
-# API Versioning 
+# API Versioning
 
-## Setup 
+## Setup
 
 We can start the service as a separate process:
 ```
@@ -12,7 +12,7 @@ $ mvn spring-boot:run
 ### Find Articles
 
 ```
-$ curl -i -k http://localhost:8080/v1/articles
+$ curl -i http://localhost:8080/api/v1/articles
 
 HTTP/1.1 200
 Content-Type: application/json
@@ -26,7 +26,7 @@ Date: Thu, 07 Oct 2021 13:38:59 GMT
 ```
 
 ```
-$ curl -i -k http://localhost:8080/v1/articles/2
+$ curl -i http://localhost:8080/api/v1/articles/2
 
 HTTP/1.1 200
 Content-Type: application/json
@@ -37,7 +37,7 @@ Date: Thu, 07 Oct 2021 13:39:04 GMT
 ```
 
 ```
-$ curl -i -k http://localhost:8080/v1/articles/99
+$ curl -i http://localhost:8080/api/v1/articles/99
 
 HTTP/1.1 404
 Content-Type: text/plain;charset=UTF-8
@@ -49,7 +49,7 @@ Could not find employee 99
 
 ### Insert an Article
 ```
-$ curl -i -k -X POST http://localhost:8080/v1/articles -H 'Content-type:application/json' -d '{"description": "Microservices Patterns: With examples in Java", "price": 2550}'
+$ curl -i -X POST http://localhost:8080/api/v1/articles -H 'Content-type:application/json' -d '{"description": "Microservices Patterns: With examples in Java", "price": 2550}'
 
 HTTP/1.1 200
 Content-Type: application/json
@@ -61,7 +61,7 @@ Date: Thu, 07 Oct 2021 14:17:36 GMT
 
 ### Update an Article
 ```
-$ curl -i -k -X PUT http://localhost:8080/v1/articles/2 -H 'Content-type:application/json' -d '{"description": "Effective Java", "price": 9999}'
+$ curl -i -X PUT http://localhost:8080/api/v1/articles/2 -H 'Content-type:application/json' -d '{"description": "Effective Java", "price": 9999}'
 
 HTTP/1.1 200
 Content-Type: application/json
@@ -73,7 +73,7 @@ Date: Thu, 07 Oct 2021 14:20:22 GMT
 
 ### Delete an Article
 ```
-$ curl -i -k -X DELETE http://localhost:8080/v1/articles/3
+$ curl -i -X DELETE http://localhost:8080/api/v1/articles/3
 
 HTTP/1.1 200
 Content-Length: 0
@@ -81,7 +81,7 @@ Date: Thu, 07 Oct 2021 14:23:30 GMT
 ```
 
 ```
-$ curl -i -k http://localhost:8080/v1/articles/3
+$ curl -i -k http://localhost:8080/api/v1/articles/3
 
 HTTP/1.1 404
 Content-Type: text/plain;charset=UTF-8
@@ -95,4 +95,4 @@ Could not find employee 3
 
 * [Versioning a REST API](https://www.baeldung.com/rest-versioning)
 
-*Egon Teiniker, 2016-2023, GPL v3.0*
+*Egon Teiniker, 2017-2023, GPL v3.0*
