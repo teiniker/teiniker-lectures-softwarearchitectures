@@ -26,7 +26,7 @@ You can find examples for the following software architectural styles:
   * [API Design](services/api-design/)
     * Service Descriptor
     * Web Service Evolution
-    * API Gateway
+    * [API Gateway](services/api-gateway/)
 
 See also: 
 [Software Design by Example](https://github.com/teiniker/teiniker-lectures-softwaredesign) 
