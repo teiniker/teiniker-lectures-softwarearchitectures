@@ -1,59 +1,86 @@
 package org.se.lab;
 
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 @RestController
 @RequestMapping("api/v1/")
 public class ArticleController
 {
-    private final ArticleRepository repository;
-
-    ArticleController(ArticleRepository repository)
+    private static long sequence = 1;
+    private static long nextValue()
     {
-        this.repository = repository;
+        return sequence++;
+    }
+    private final Map<Long, Article> table;
+
+    ArticleController()
+    {
+        // Simulate database table
+        table = new ConcurrentHashMap<>();
+        long id1 = nextValue();
+        table.put(id1, new Article(id1, "LEGO 42122 Technic Jeep Wrangler 4x4 ", 3473));
+        long id2 = nextValue();
+        table.put(id2, new Article(id2, "Mould King 15025 Technik Muldenkipper", 6956));
+        long id3 = nextValue();
+        table.put(id3, new Article(id3, "CaDA Monster Truck", 8999));
     }
 
     @GetMapping("/articles")
-    List<Article> findAll()
+    ResponseEntity<List<Article>> findAll()
     {
-        return repository.findAll();
+        return new ResponseEntity<>(new ArrayList(table.values()), HttpStatus.OK);
     }
 
     @GetMapping("/articles/{id}")
-    Article findById(@PathVariable Long id)
+    ResponseEntity<Article> findById(@PathVariable long id)
     {
-        return repository.findById(id).orElseThrow(() -> new ArticleNotFoundException(id));
+        Article item = table.get(id);
+        if(item == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        else
+            return new ResponseEntity<>(table.get(id), HttpStatus.OK);
     }
 
     @PostMapping("/articles")
-    Article insert(@RequestBody Article newArticle)
+    ResponseEntity<Article> insert(@RequestBody Article article)
     {
-        return repository.save(newArticle);
+        article.setId(nextValue());
+        table.put(article.getId(), article);
+        return new ResponseEntity<>(article, HttpStatus.CREATED);
     }
 
     @PutMapping("/articles/{id}")
-    Article update(@RequestBody Article newArticle, @PathVariable Long id)
+    ResponseEntity<?> update(@RequestBody Article article, @PathVariable long id)
     {
-        return repository.findById(id)
-                .map(employee -> {
-                    employee.setDescription(newArticle.getDescription());
-                    employee.setPrice(newArticle.getPrice());
-                    return repository.save(employee);
-                })
-                .orElseGet(() -> {
-                    newArticle.setId(id);
-                    return repository.save(newArticle);
-                });
+        Article item = table.get(id);
+        if(item == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        else
+        {
+            item.setDescription(article.getDescription());
+            item.setPrice(article.getPrice());
+            return new ResponseEntity<>(item, HttpStatus.OK);
+        }
     }
 
     @DeleteMapping("/articles/{id}")
-    void delete(@PathVariable Long id)
+    ResponseEntity<?> delete(@PathVariable long id)
     {
-        repository.deleteById(id);
+        Article item = table.get(id);
+        if(item == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        else
+        {
+            table.remove(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
     }
 }
+
