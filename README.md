@@ -19,10 +19,11 @@ You can find examples for the following software architectural styles:
   * [Introduction](clean-architecture/README.md)
 
 3. **Microservice Architectures**
-  * API Styles 
+  * [API Styles](services/api-styles/) 
     * RPC API
     * Resource API
-  * API Design
+
+  * [API Design](services/api-design/)
     * Service Descriptor
     * Web Service Evolution
     * API Gateway

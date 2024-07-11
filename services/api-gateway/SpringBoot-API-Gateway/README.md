@@ -89,75 +89,6 @@ Date: Tue, 07 Feb 2023 19:12:14 GMT
 The path `/v1/books` will be rewritten to: `/books`.
 
 
-## Method Route Predicate 
-The **Method Route Predicate** Factory takes a methods argument which is one or more parameters: 
-the HTTP methods to match. The following example configures a method route predicate:
-```
-spring:
-  cloud:
-    gateway:
-      routes:
-      - id: method_route
-        uri: http://localhost:9090/articles
-        predicates:
-        - Method=GET,POST
-```
-This route matches if the request method was a `GET` or a `POST`.
-
-### Find Articles
-
-```
-$ curl -i http://localhost:8080/articles
-
-HTTP/1.1 200 OK
-transfer-encoding: chunked
-Content-Type: application/json
-Date: Tue, 07 Feb 2023 17:44:17 GMT
-
-[{"id":1,"description":"Design Patterns","price":4295},{"id":2,"description":"Effective Java","price":9999}]
-```
-
-```
-$ curl -i http://localhost:8080/articles/2
-
-HTTP/1.1 200 OK
-transfer-encoding: chunked
-Content-Type: application/json
-Date: Tue, 07 Feb 2023 17:45:24 GMT
-
-{"id":2,"description":"Effective Java","price":9999}
-```
-
-### Insert an Article
-```
-$ curl -i -X POST http://localhost:8080/articles -H 'Content-type:application/json' -d '{"description": "Microservices Patterns: With examples in Java", "price": 2550}'
-
-HTTP/1.1 200 OK
-transfer-encoding: chunked
-Content-Type: application/json
-Date: Tue, 07 Feb 2023 17:49:33 GMT
-
-{"id":4,"description":"Microservices Patterns: With examples in Java","price":2550}
-```
-
-### Update an Article
-```
-$ curl -i -X PUT http://localhost:8080/articles/2 -H 'Content-type:application/json' -d '{"description": "Effective Java", "price": 9999}'
-
-HTTP/1.1 404 Not Found
-Content-Type: application/json
-Content-Length: 139
-```
-
-### Delete an Article
-```
-$ curl -i -X DELETE http://localhost:8080/articles/3
-
-HTTP/1.1 404 Not Found
-Content-Type: application/json
-Content-Length: 139
-```
-
 
 
 ## References
@@ -165,4 +96,4 @@ Content-Length: 139
 * [Spring Cloud Tutorial - Spring Cloud Gateway Hello World Example](https://www.javainuse.com/spring/cloud-gateway)
 * [Spring Cloud Gateway](https://cloud.spring.io/spring-cloud-gateway/reference/html)
 
-*Egon Teiniker, 2016-2023, GPL v3.0*
+*Egon Teiniker, 2017-2024, GPL v3.0*
