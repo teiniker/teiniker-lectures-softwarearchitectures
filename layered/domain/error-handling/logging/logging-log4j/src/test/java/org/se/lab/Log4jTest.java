@@ -24,10 +24,11 @@ public class Log4jTest
 	{
 		logger.trace("trace");
 		logger.debug("debug");
+		logger.debug("debug with exception", new IllegalArgumentException());
+
 		logger.info("info");
 		logger.warn("warn");
 		logger.error("error");
-		logger.fatal("fatal");		
-		logger.debug("debug with exception", new IllegalArgumentException());				
+		logger.fatal("fatal");
 	}
 }

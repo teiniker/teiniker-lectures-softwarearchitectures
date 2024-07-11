@@ -12,7 +12,7 @@ import org.se.lab.business.ServiceFactory;
 import org.se.lab.business.UserService;
 import org.se.lab.data.User;
 
-public class UserServiceTest 
+public class UserServiceTest
 {	
 	private static final JdbcTestHelper JDBC_HELPER = new JdbcTestHelper("src/test/resources/jdbc.properties");
 	private Connection connection = null;
@@ -20,7 +20,7 @@ public class UserServiceTest
 	private UserService service;
 	
 	@Before
-	public void setup() throws ClassNotFoundException, SQLException  
+	public void setup()
 	{		
 		JDBC_HELPER.executeSqlScript("src/test/resources/sql/setup.sql");
 		connection = JDBC_HELPER.getConnection();
