@@ -4,15 +4,21 @@ Software Architectures is a huge topic which is mainly discussed in theory.
 This project collects examples for the most common architectural patterns. 
 You can find examples for the following software architectural styles:
 
-1. [Layered Architecture](https://github.com/teiniker/teiniker-lectures-softwarearchitectures/tree/master/layered)
-  * Data Access Object (DAO)
-  * Service Layer
-  * Model-View-Controller (incl. Front Controller and View Helper)
-  * Dependency Injection
-  * Remote Facade
-  * Data Transfer Object (DTO)
+1. **Layered Architecture**
+  * [Data Source Layer](layered/data-source/)
+    * Data Access Object (DAO)
+  * [Domain Layer](layered/domain/) 
+    * Service Layer
+    * Dependency Injection
+  * [Presentation Layer](layered/presentation/)  
+    * Model-View-Controller (incl. Front Controller and View Helper)
+    * Remote Facade
+    * Data Transfer Object (DTO)
   
-2. [Microservice Architectures](https://github.com/teiniker/teiniker-lectures-softwarearchitectures/tree/master/services)
+2. **Clean Architecture**
+  * [Introduction](clean-architecture/README.md)
+
+3. **Microservice Architectures**
   * API Styles 
     * RPC API
     * Resource API
@@ -27,4 +33,4 @@ See also:
 As a development environment, you can use a pre-configured Linux VM image:
 [Virtual Lab](https://drive.google.com/drive/folders/1AzsF4Mvh1HJ8k6OW5W5hQ5CF0HdqA51l)
 
-*Egon Teiniker, 2019-2024, GPL v3.0*
+*Egon Teiniker, 2017-2024, GPL v3.0*
