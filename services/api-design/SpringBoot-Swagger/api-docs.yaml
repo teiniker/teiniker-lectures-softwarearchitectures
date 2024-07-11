@@ -10,7 +10,7 @@ paths:
     get:
       tags:
       - article-controller
-      operationId: one
+      operationId: findById
       parameters:
       - name: id
         in: path
@@ -19,12 +19,6 @@ paths:
           type: integer
           format: int64
       responses:
-        "404":
-          description: Not Found
-          content:
-            '*/*':
-              schema:
-                type: string
         "200":
           description: OK
           content:
@@ -34,7 +28,7 @@ paths:
     put:
       tags:
       - article-controller
-      operationId: replaceEmployee
+      operationId: update
       parameters:
       - name: id
         in: path
@@ -49,22 +43,16 @@ paths:
               $ref: '#/components/schemas/Article'
         required: true
       responses:
-        "404":
-          description: Not Found
-          content:
-            '*/*':
-              schema:
-                type: string
         "200":
           description: OK
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/Article'
+                type: object
     delete:
       tags:
       - article-controller
-      operationId: deleteEmployee
+      operationId: delete
       parameters:
       - name: id
         in: path
@@ -73,30 +61,20 @@ paths:
           type: integer
           format: int64
       responses:
-        "404":
-          description: Not Found
+        "200":
+          description: OK
           content:
             '*/*':
               schema:
-                type: string
-        "200":
-          description: OK
+                type: object
   /articles:
     get:
       tags:
       - article-controller
-      summary: Get all Articles
-      description: Returns a list of articles
-      operationId: articles
+      operationId: findAll
       responses:
-        "404":
-          description: Not found
-          content:
-            '*/*':
-              schema:
-                type: string
         "200":
-          description: "ok, successful operation"
+          description: OK
           content:
             '*/*':
               schema:
@@ -106,7 +84,7 @@ paths:
     post:
       tags:
       - article-controller
-      operationId: newArticle
+      operationId: insert
       requestBody:
         content:
           application/json:
@@ -114,12 +92,6 @@ paths:
               $ref: '#/components/schemas/Article'
         required: true
       responses:
-        "404":
-          description: Not Found
-          content:
-            '*/*':
-              schema:
-                type: string
         "200":
           description: OK
           content:
@@ -133,12 +105,9 @@ components:
       properties:
         id:
           type: integer
-          description: auto-generated identifier
           format: int64
-          example: 7
         description:
           type: string
         price:
           type: integer
           format: int64
-      description: Holds all data for a particular article.

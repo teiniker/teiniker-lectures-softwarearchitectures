@@ -1,14 +1,14 @@
 # Documenting a REST API
 
 Documentation is an essential part of building REST APIs.
-**SpringDoc** is a tool that simplifies the generation and maintenance of API docs based on the 
+**SpringDoc** is a tool that simplifies the generation and maintenance of API docs based on the
 **OpenAPI 3 specification**
 
 ## Service Setup
 
-To have `springdoc-openapi` automatically generate the OpenAPI 3 specification docs for our API, 
+To have `springdoc-openapi` automatically generate the OpenAPI 3 specification docs for our API,
 we simply add the springdoc-openapi-ui dependency to our `pom.xml`:
-Besides generating the OpenAPI 3 specification itself, we can integrate `springdoc-openapi` with 
+Besides generating the OpenAPI 3 specification itself, we can integrate `springdoc-openapi` with
 **Swagger UI** so that we can interact with our API specification and exercise the endpoints.
 
 ```
@@ -31,7 +31,7 @@ So now our API documentation will be available at:
 http://localhost:8080/swagger-ui.html
 ```
 
-## Configure SpringDoc 
+## Configure SpringDoc
 
 Springdoc-openapi also supports swagger-ui properties.
 These can be used as **Spring Boot properties**, with the prefix `springdoc.swagger-ui`.
