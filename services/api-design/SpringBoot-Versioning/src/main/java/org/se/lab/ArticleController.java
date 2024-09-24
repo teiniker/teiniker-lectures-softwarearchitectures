@@ -57,7 +57,7 @@ public class ArticleController
     }
 
     @PutMapping("/articles/{id}")
-    ResponseEntity<?> update(@RequestBody Article article, @PathVariable long id)
+    ResponseEntity<Article> update(@RequestBody Article article, @PathVariable long id)
     {
         Article item = table.get(id);
         if(item == null)
@@ -71,7 +71,7 @@ public class ArticleController
     }
 
     @DeleteMapping("/articles/{id}")
-    ResponseEntity<?> delete(@PathVariable long id)
+    ResponseEntity<HttpStatus> delete(@PathVariable long id)
     {
         Article item = table.get(id);
         if(item == null)
