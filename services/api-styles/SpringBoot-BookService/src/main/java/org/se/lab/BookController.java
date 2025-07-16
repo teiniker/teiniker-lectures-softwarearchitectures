@@ -79,7 +79,8 @@ public class BookController
     {
         Book item = table.get(id);
         if(item == null)
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            //return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         else
         {
             table.remove(id);

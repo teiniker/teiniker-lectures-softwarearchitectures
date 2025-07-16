@@ -7,7 +7,7 @@
 ```bash
 $ curl -i http://localhost:8080/articles
 
-$ curl -i http://localhost:8080/articles/2
+$ curl -i http://localhost:8080/articles/1
 $ curl -i http://localhost:8080/articles/666
 
 $ curl -i -X POST http://localhost:8080/articles -H 'Content-type:application/json' -d '{"description":"CaDA Master C61505W","price":21174}'
