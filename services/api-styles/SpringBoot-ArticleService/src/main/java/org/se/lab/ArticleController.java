@@ -24,7 +24,7 @@ public class ArticleController
         // Simulate database table
         table = new ConcurrentHashMap<>();
         long id1 = nextValue();
-        table.put(id1, new Article(id1, "LEGO 42122 Technic Jeep Wrangler 4x4 ", 3473));
+        table.put(id1, new Article(id1, "LEGO 42122 Technic Jeep Wrangler 4x4", 3473));
         long id2 = nextValue();
         table.put(id2, new Article(id2, "Mould King 15025 Technik Muldenkipper", 6956));
         long id3 = nextValue();
@@ -74,7 +74,8 @@ public class ArticleController
     {
         Article item = table.get(id);
         if(item == null)
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            //return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         else
         {
             table.remove(id);
