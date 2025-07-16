@@ -1,0 +1,41 @@
+Exercise: HTTP Client Test - Book Service
+-------------------------------------------------------------------------------
+
+Start the following REST service:
+$ cd services/api-styles/SpringBoot-BookService
+$ mvn spring-boot:run
+
+Manually test the following curl statements:
+
+$ curl -i http://localhost:8080/books/2
+$ curl -i http://localhost:8080/books/666
+
+$ curl -i http://localhost:8080/books
+
+$ curl -i -X POST http://localhost:8080/books -H 'Content-type:application/json' -d '{"author":"Robert C. Martin","title":"Clean Code","isbn":"978-0132350884"}'
+
+$ curl -i -X PUT http://localhost:8080/books/1 -H 'Content-type:application/json' -d '{"author":"Joshua Bloch","title":"Effective Java, 2nd Edition","isbn":"978-0134685991"}'
+
+$ curl -i -X DELETE http://localhost:8080/books/2
+
+Now it is time to automate these tests...
+
+A) Implement the following test cases in "HttpClientTest":
+    void testGetRequestIdFound()
+    void testGetRequestNotFound()
+    void testGetRequestAll()
+    void testPostRequest()
+    void testPutRequest()
+    void testDeleteRequest()
+
+B) Validation
+    Validate the following aspects of the HTTP response:
+    - Status code
+    - The "content-type" header of the response (if there is a response body)
+    - The data of the response body (if there is one)
+
+C) Implement the following converter methods:
+    Book fromJSON(String json)
+    List<Book> fromJSONArray(String json)
+    String toJSON(Book book)
+    
