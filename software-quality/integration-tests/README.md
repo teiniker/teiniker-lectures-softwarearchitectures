@@ -17,10 +17,6 @@ Components that frequently appear in integration tests are:
 
 ## Test Case Design 
 The design of the test cases for integration tests is **based on the requirements**.
-In this context, we also speak of **black-box tests**, since the focus is on the requirements and not the implementation of the system under test (SUT).
-
-* **Blach-Box Test Techniques**: We apply techniques like **Equivalence Partitioning** 
-and **Boundary Value Analysis** to minimize the number of test cases.
 
 
 ## References
