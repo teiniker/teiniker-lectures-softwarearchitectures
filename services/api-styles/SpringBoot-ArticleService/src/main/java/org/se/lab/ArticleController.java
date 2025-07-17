@@ -12,6 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @RestController
 public class ArticleController
 {
+    // TODO: Use atomic types
     private static long sequence = 1;
     private static long nextValue()
     {
@@ -38,7 +39,7 @@ public class ArticleController
     }
 
     @GetMapping("/articles/{id}")
-    ResponseEntity<Article> indById(@PathVariable long id)
+    ResponseEntity<Article> findById(@PathVariable long id)
     {
         Article item = table.get(id);
         if(item == null)
