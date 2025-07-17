@@ -18,7 +18,7 @@ to them such as: security, monitoring/metrics, and resiliency.
 
 Set up the microservice: 
 ```
-$ cd SpringBoot-BookService
+$ cd SpringBoot-BackendService
 $ mvn spring-boot:run
 
 $ curl -i http://localhost:9090/books
