@@ -8,22 +8,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
 public class ArticleController
 {
-    // TODO: Use atomic types
-    private static long sequence = 1;
+    // Note that the RestController is used as a singleton by the Spring framework,
+    // therefore, the RestController implementation must be thread-safe!!
+    private static final AtomicLong sequence = new AtomicLong(1);
     private static long nextValue()
     {
-        return sequence++;
+        return sequence.getAndIncrement();
     }
-    private final Map<Long, Article> table;
+    private final Map<Long, Article> table = new ConcurrentHashMap<>();
 
     ArticleController()
     {
         // Simulate database table
-        table = new ConcurrentHashMap<>();
         long id1 = nextValue();
         table.put(id1, new Article(id1, "LEGO 42122 Technic Jeep Wrangler 4x4", 3473));
         long id2 = nextValue();
