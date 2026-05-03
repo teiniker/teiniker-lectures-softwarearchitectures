@@ -1,4 +1,4 @@
-# Software Architectures by Examples
+# Software Architectures by Example
 
 Software Architectures is a huge topic which is mainly discussed in theory. 
 This project collects examples for the most common architectural patterns. 
