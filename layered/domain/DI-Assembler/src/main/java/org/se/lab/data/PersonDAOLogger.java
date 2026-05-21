@@ -2,9 +2,6 @@ package org.se.lab.data;
 
 import java.util.List;
 
-import org.se.lab.data.Person;
-import org.se.lab.data.PersonDAO;
-
 class PersonDAOLogger // package-private
     implements PersonDAO
 { 

@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.se.lab.data.Person;
 import org.se.lab.data.PersonDAO;
-import org.se.lab.service.PersonService;
 
 public class PersonServiceImpl implements PersonService
 {

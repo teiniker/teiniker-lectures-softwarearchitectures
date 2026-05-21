@@ -1,6 +1,5 @@
 package org.se.lab.domain;
 
-import org.se.lab.domain.TranslatorService;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;

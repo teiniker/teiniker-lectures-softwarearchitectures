@@ -1,7 +1,5 @@
 package org.se.lab.domain;
 
-import org.se.lab.domain.TranslatorService;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +10,7 @@ public class TranslatorServiceFrench
 
     public TranslatorServiceFrench()
     {
-        dictionary = new HashMap<String, String>();
+        dictionary = new HashMap<>();
         dictionary.put("cat", "Chatte");
         dictionary.put("mouse", "Souris");
         dictionary.put("horse", "Cheval");
