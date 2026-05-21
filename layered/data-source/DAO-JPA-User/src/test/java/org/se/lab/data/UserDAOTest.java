@@ -13,7 +13,7 @@ import org.junit.Test;
 
 public class UserDAOTest
 {
-	private final static JpaTestHelper JPA_HELPER = new JpaTestHelper();
+	private static final JpaTestHelper JPA_HELPER = new JpaTestHelper();
 
 	private EntityManager em = JPA_HELPER.getEntityManager("test");
     private UserDAO dao;

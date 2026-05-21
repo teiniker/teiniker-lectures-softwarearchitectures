@@ -1,0 +1,27 @@
+{
+	"folders": [
+		{
+			"name": "teiniker-lectures-softwarearchitectures",
+			"path": "."
+		},
+		{
+			"name": "JDBC-UserTable",
+			"path": "software-quality/persistent-fixtures/JDBC-UserTable"
+		},
+		{
+			"path": "software-quality/persistent-fixtures/SQLite-UserTable"
+		},
+		{
+			"path": "software-quality/persistent-fixtures/SQLite-UserTable-InMemory"
+		},
+		{
+			"path": "layered/data-source/DAO-JDBC-User"
+		},
+		{
+			"path": "layered/data-source/JPA-EntityManager"
+		}
+	],
+	"settings": {
+		"java.compile.nullAnalysis.mode": "automatic"
+	}
+}

@@ -1,8 +1,11 @@
 # Persistent Test Fixtures 
 
-From a technical point of view, we can use the **same testing framework** (and the **same xUnit patterns**) for acceptance tests as for unit tests.
+From a technical point of view, we can use the **same testing framework** 
+(and the **same xUnit patterns**) for acceptance tests as for unit tests.
 
-Particular attention must be paid to the **setup** and **teardown** phase when we deal with **Persistent Test Fixtures**. For performance reasons, we are often forced to work with **Shared Fixtures**.
+Particular attention must be paid to the **setup** and **teardown** phase 
+when we deal with **Persistent Test Fixtures**. For performance reasons, 
+we are often forced to work with **Shared Fixtures**.
 
 Components that frequently appear in integration tests are:
 
