@@ -11,7 +11,7 @@ import org.junit.Before;
 
 public abstract class AbstractTest
 {
-	protected final static JpaTestHelper JPA_HELPER = new JpaTestHelper();
+	protected static final JpaTestHelper JPA_HELPER = new JpaTestHelper();
 	protected EntityManager em = JPA_HELPER.getEntityManagerForPersistenceUnit("test");
 	
 	protected List<Integer> ids = new ArrayList<Integer>();      

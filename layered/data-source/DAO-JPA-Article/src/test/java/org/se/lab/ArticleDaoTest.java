@@ -12,7 +12,7 @@ import org.junit.Test;
 
 public class ArticleDaoTest
 {
-	private final static JpaTestHelper JPA_HELPER = new JpaTestHelper();
+	private static final JpaTestHelper JPA_HELPER = new JpaTestHelper();
 	private final EntityManager em = JPA_HELPER.getEntityManagerForPersistenceUnit("test");
 
 	private final List<Integer> ids = new ArrayList<>();

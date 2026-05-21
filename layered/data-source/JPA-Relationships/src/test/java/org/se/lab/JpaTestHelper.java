@@ -19,7 +19,7 @@ public class JpaTestHelper
 	}
 	public void setPersistenceUnitName(String persistenceUnitName)
 	{
-		if(persistenceUnitName == null || persistenceUnitName.length() == 0)
+		if(persistenceUnitName == null || persistenceUnitName.isEmpty())
 			throw new IllegalArgumentException("Illegal parameter persistenceUnitName = " + persistenceUnitName);
 		this.persistenceUnitName = persistenceUnitName;
 	}

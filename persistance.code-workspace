@@ -19,6 +19,21 @@
 		},
 		{
 			"path": "layered/data-source/JPA-EntityManager"
+		},
+		{
+			"path": "layered/data-source/DAO-JPA-Article"
+		},
+		{
+			"path": "layered/data-source/DAO-JPA-User"
+		},
+		{
+			"path": "layered/data-source/DAO-JPA-User-Generics"
+		},
+		{
+			"path": "layered/data-source/JPA-Inheritance"
+		},
+		{
+			"path": "layered/data-source/JPA-Relationships"
 		}
 	],
 	"settings": {
