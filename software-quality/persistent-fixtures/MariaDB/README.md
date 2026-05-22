@@ -21,6 +21,12 @@ $ sudo mysql_secure_installation
 
 ## Database Server 
 
+The database server must be started first:
+
+```Bash
+$ sudo systemctl start mariadb.service
+```
+
 After installing the database server, create a database named `testdb` 
 and a user `student` with the password `student`. Grant the user full 
 DBA privileges on the `testdb` database.
