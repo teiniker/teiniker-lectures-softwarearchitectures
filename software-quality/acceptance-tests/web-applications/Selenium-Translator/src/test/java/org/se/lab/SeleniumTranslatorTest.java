@@ -4,7 +4,6 @@ import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
 import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.is;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -35,7 +34,7 @@ public class SeleniumTranslatorTest
         driver.findElement(By.cssSelector("option:nth-child(2)")).click();
         driver.findElement(By.cssSelector("th:nth-child(3) > input")).click();
         driver.findElement(By.cssSelector("p:nth-child(1)")).click();
-        assertThat(driver.findElement(By.cssSelector("p:nth-child(1)")).getText(), is("Translate: cat into Chatte"));
+        assertEquals("Translate: cat into Chatte", driver.findElement(By.cssSelector("p:nth-child(1)")).getText());
         driver.findElement(By.linkText("back")).click();
     }
 
@@ -46,10 +45,10 @@ public class SeleniumTranslatorTest
         driver.findElement(By.name("word")).click();
         driver.findElement(By.name("word")).sendKeys("cat");
         driver.findElement(By.name("language")).click();
-        driver.findElement(By.cssSelector("option:nth-child(2)")).click();
+        driver.findElement(By.cssSelector("option:nth-child(1)")).click();
         driver.findElement(By.cssSelector("th:nth-child(3) > input")).click();
         driver.findElement(By.cssSelector("p:nth-child(1)")).click();
-        assertThat(driver.findElement(By.cssSelector("p:nth-child(1)")).getText(), is("Translate: cat into Chatte"));
+        assertEquals("Translate: cat into Katze", driver.findElement(By.cssSelector("p:nth-child(1)")).getText());
         driver.findElement(By.linkText("back")).click();
     }
 }

@@ -4,16 +4,16 @@ Selenium is a project for a range of tools and libraries that enable and support
 
 Selenium is an umbrella project for a range of tools and libraries that enable and support the automation of web browsers.
 
-* **WebDriver**\
-  WebDriver uses **browser automation APIs** provided by browser vendors to **control browser** and run tests.
-  This is as if a real user is operating the browser.
-
 * **IDE**\
   IDE (Integrated Development Environment) is the tool you use to develop your Selenium test cases.
   It’s an easy-to-use **Chrome and Firefox extension** and is generally the most efficient way to develop test cases.
   It **records the users’ actions** in the browser for you, using existing Selenium commands, with parameters defined
   by the context of that element.
   This is not only a time-saver but also an **excellent way of learning Selenium** script syntax.
+
+* **WebDriver**\
+  WebDriver uses **browser automation APIs** provided by browser vendors to **control browser** and run tests.
+  This is as if a real user is operating the browser.
 
 * **Grid**\
   Selenium Grid allows you to **run test cases in different machines** across different platforms.
@@ -40,18 +40,17 @@ Selenium WebDriver refers to both the language bindings and the implementations 
 controlling code. This is commonly referred to as just WebDriver.
 
 **Install Web Driver**:
-* Download the binary package [geckodriver-v0.36.0-linux64.tar.gz](https://github.com/mozilla/geckodriver/releases)
+* Download the binary package [geckodriver-v0.37.0-linux64.tar.gz](https://github.com/mozilla/geckodriver/releases)
 * Unzip the tar file and store the binary in a local directory:
     ```
     $ cd Downloads
-    $ tar xvzf geckodriver-v0.36.0-linux64.tar.gz
+    $ tar xvzf geckodriver-v0.37.0-linux64.tar.gz
     $ mkdir ~/local/webdriver
     $ mv geckodriver ~/local/webdriver/
     ```
 * Add the webdriver directory to the PATH environment variable:
     ```
     $ code ~/.bashrc
-    [i]
     export WEBDRIVER=/home/student/local/webdriver/
     export PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$M2_HOME/bin:$COVERAGE/bin:/opt/bin:$WEBDRIVER/:$PATH
     ```
