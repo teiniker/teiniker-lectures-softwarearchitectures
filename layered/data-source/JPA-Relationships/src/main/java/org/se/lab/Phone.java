@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Table(name = Phone.TABLE_NAME)
 public class Phone
 {
-	public static final String TABLE_NAME = "TEST_PHONE";
+	public static final String TABLE_NAME = "PHONE";
 	
 	/*
 	 * Constructors

@@ -9,7 +9,7 @@ import javax.persistence.Table;
 @Table(name = Address.TABLE_NAME)
 public class Address
 {
-	public static final String TABLE_NAME = "TEST_ADDRESS";
+	public static final String TABLE_NAME = "ADDRESS";
 	
 	/*
 	 * Constructors

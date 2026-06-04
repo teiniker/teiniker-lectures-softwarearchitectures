@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Table(name = CreditCard.TABLE_NAME)
 public class CreditCard
 {
-	public static final String TABLE_NAME = "TEST_CREDIT_CARD";
+	public static final String TABLE_NAME = "CREDIT_CARD";
 	
 	/*
 	 * Constructors

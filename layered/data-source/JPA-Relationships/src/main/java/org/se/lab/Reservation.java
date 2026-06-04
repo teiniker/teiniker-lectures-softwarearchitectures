@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Table(name = Reservation.TABLE_NAME)
 public class Reservation
 {
-	protected static final String TABLE_NAME = "TEST_RESERVATION";
+	protected static final String TABLE_NAME = "RESERVATION";
 	
 	/*
 	 * Constructors
