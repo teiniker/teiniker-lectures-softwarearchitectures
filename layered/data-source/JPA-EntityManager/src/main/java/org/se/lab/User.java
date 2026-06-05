@@ -15,7 +15,7 @@ public class User
 {
 	private static final long serialVersionUID = 8685792371938184530L;
 
-	public static final String TABLE_NAME = "TEST_USER";
+	public static final String TABLE_NAME = "USER";
 	
     /*
 	 * Constructors
