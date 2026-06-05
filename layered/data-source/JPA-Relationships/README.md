@@ -35,11 +35,16 @@ In the **Customer** class, the one-to-one relationship is defined using the `@On
 private Address address;
 ```
 
-- `@OneToOne` — Declares a one-to-one relationship. This is a **unidirectional** relationship (only Customer knows about Address).
-- `cascade={CascadeType.ALL}`: Specifies that when a Customer is persisted, updated, or deleted, the same operations cascade to its associated Address.
-- `@JoinColumn(name="ADDRESS_ID")`: Specifies the **foreign key column** in the CUSTOMER table that references the ADDRESS table. This annotation marks Customer as the **owning side** of the relationship.
+- `@OneToOne` — Declares a one-to-one relationship. This is a **unidirectional** relationship 
+	(only `Customer` knows about `Address`).
+- `cascade={CascadeType.ALL}`: Specifies that when a `Customer` is persisted, updated, or 
+	deleted, the same operations cascade to its associated `Address`.
+- `@JoinColumn(name="ADDRESS_ID")`: Specifies the **foreign key column** in the `CUSTOMER` 
+	table that references the `ADDRESS` table. This annotation marks `Customer` as the 
+	**owning side** of the relationship.
 
-The **Address** class has no relationship annotations back to Customer (it doesn't need to know about the customer).
+The **Address** class has no relationship annotations back to `Customer` (it doesn't need 
+to know about the customer).
 
 ### SQL Relations Between Tables
 
@@ -67,7 +72,7 @@ create table CUSTOMER (
 
 - `ADDRESS_ID` is a **foreign key** in `CUSTOMER` that references the `id` of `ADDRESS`
 - Each customer can have exactly one address (enforced by the database constraint)
-- The foreign key is on the **owning side** (Customer), matching the `@JoinColumn` annotation
+- The foreign key is on the **owning side** (`Customer`), matching the `@JoinColumn` annotation
 - To fetch a customer with their address, the database must JOIN the two tables
 
 
@@ -171,7 +176,7 @@ create table PHONE (
 	foreign key (CUSTOMER_ID) references CUSTOMER
 )
 
-create table TEST_CUSTOMER (
+create table CUSTOMER (
 	id number(10,0) not null,
 	firstName varchar2(255 char),
 	lastName varchar2(255 char),
@@ -202,7 +207,7 @@ In the **Reservation** class (owning side):
 
 ```java
 @ManyToMany
-@JoinTable(name="TEST_RESERVATION_CUSTOMER", 
+@JoinTable(name="RESERVATION_CUSTOMER", 
 	joinColumns={@JoinColumn(name="RESERVATION_ID")},
 	inverseJoinColumns={@JoinColumn(name="CUSTOMER_ID")}
 )
