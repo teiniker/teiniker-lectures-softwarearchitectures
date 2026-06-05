@@ -20,10 +20,10 @@ In object-oriented programming, relationships between classes and in relational 
 
  **Java Persistence API (JPA)** bridges this gap by mapping object relationships to database relationships. The annotations define how object references map to foreign keys and join tables, allowing you to navigate object graphs while Hibernate/JPA handles the SQL generation and database synchronization.
 
-![Class Diagram](figures/ClassDiagram.png)
 
+## One-to-One Directed  
 
-## One-to-One Directed: Customer --[1]-> Address  
+![JPA-One-to-One](figures/JPA-One-to-One.png)
 
 ### Annotations in the Source Code
 
@@ -71,7 +71,9 @@ create table CUSTOMER (
 - To fetch a customer with their address, the database must JOIN the two tables
 
 
-## One-to-One Bidirectional: Customer --[1]---[1]-- CreditCard
+## One-to-One Bidirectional
+
+![JPA-One-to-One-Bidirectional](figures/JPA-One-to-One-Bi.png)
 
 ### Annotations in the Source Code
 
@@ -128,7 +130,9 @@ has **only one foreign key direction**
 - Both sides can navigate to each other, but only the owning side controls the database relationship
 
 
-## One-to-Many Directed: Customer ---[*]-> Phone
+## One-to-Many Directed
+
+![JPA-One-to-Many](figures/JPA-One-to-Many.png)
 
 ### Annotations in the Source Code
 
@@ -188,7 +192,9 @@ create table TEST_CUSTOMER (
 	relationship logically.
 
 
-## Many-to-Many Bidirectional: Customer --[*]---[*]-- Reservation
+## Many-to-Many Bidirectional
+
+![JPA-Many-to-Many](figures/JPA-Many-to-Many.png)
 
 ### Annotations in the Source Code
 
