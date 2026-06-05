@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class Employee
 	extends Person
 {
-	public static final String TABLE_NAME = "TEST_EMPLOYEE";
+	public static final String TABLE_NAME = "EMPLOYEE";
 
 	/*
 	 * Constructor

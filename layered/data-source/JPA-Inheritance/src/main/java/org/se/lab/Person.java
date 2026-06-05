@@ -23,7 +23,7 @@ import javax.persistence.Table;
 //@Inheritance(strategy=InheritanceType.JOINED)
 public class Person
 {
-	public static final String TABLE_NAME = "TEST_PERSON";
+	public static final String TABLE_NAME = "PERSON";
 	
 	/*
 	 * Constructor
