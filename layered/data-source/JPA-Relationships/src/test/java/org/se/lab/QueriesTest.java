@@ -112,12 +112,6 @@ public class QueriesTest
         	"LEFT JOIN FETCH c.phoneNumbers " 
         	);
 
-/*    	
-        Query query = em.createQuery(
-            	"SELECT c " +
-            	"FROM Customer AS c "  
-            	);
-*/
         List<?> result = query.getResultList();
         
         Customer c = (Customer)result.get(0);
