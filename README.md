@@ -2,7 +2,9 @@
 
 Software Architectures is a huge topic which is mainly discussed in theory. 
 This project collects examples for the most common architectural patterns. 
-You can find examples for the following software architectural styles:
+Here, you can find examples for different software architectural styles.
+
+---
 
 1. **Layered Architecture**
   * [Data Source Layer](layered/data-source/)
@@ -14,10 +16,12 @@ You can find examples for the following software architectural styles:
     * Model-View-Controller (incl. Front Controller and View Helper)
     * Remote Facade
     * Data Transfer Object (DTO)
-  
+---
+
 2. **Clean Architecture**
   * [Introduction](clean-architecture/introduction/README.md)
   * Demo: [ServiceLayer-UserService](clean-architecture/ServiceLayer-UserService/)
+---
 
 3. **Microservice Architectures**
   * [API Styles](services/api-styles/) 
@@ -29,6 +33,7 @@ You can find examples for the following software architectural styles:
     * Web Service Evolution
     * [API Gateway](services/api-gateway/)
 
+---
 See also: 
 [Software Design by Example](https://github.com/teiniker/teiniker-lectures-softwaredesign) 
 
