@@ -173,4 +173,4 @@ of fuss.
 
 * Robert C. Martin. **Clean Architecture: A Craftsman's Guide to Software Structure and Design**. Addison-Wesley, 2017
 
-*Egon Teiniker, 2019-2024, GPL v3.0*
+*Egon Teiniker, 2016-2026, GPL v3.0*
