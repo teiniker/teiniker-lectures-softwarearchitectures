@@ -16,7 +16,8 @@ You can find examples for the following software architectural styles:
     * Data Transfer Object (DTO)
   
 2. **Clean Architecture**
-  * [Introduction](clean-architecture/README.md)
+  * [Introduction](clean-architecture/introduction/README.md)
+  * Demo: [ServiceLayer-UserService](clean-architecture/ServiceLayer-UserService/)
 
 3. **Microservice Architectures**
   * [API Styles](services/api-styles/) 
