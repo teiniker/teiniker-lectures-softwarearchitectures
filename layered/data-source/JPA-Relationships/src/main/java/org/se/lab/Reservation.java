@@ -76,7 +76,7 @@ public class Reservation
 	 * Reservation -[*]---[*]- Customer 
 	 */
 	@ManyToMany // owning side
-	@JoinTable(name="TEST_RESERVATION_CUSTOMER", 
+	@JoinTable(name="RESERVATION_CUSTOMER", 
 		joinColumns={@JoinColumn(name="RESERVATION_ID")},
 		inverseJoinColumns={@JoinColumn(name="CUSTOMER_ID")}
 	)				
