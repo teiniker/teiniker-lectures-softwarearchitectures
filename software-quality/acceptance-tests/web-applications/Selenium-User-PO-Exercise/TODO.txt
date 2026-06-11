@@ -1,0 +1,20 @@
+Exercise: Selenium Page Object Test - Add User
+-------------------------------------------------------------------------------
+
+Starten Sie die Web Applikation presentation/MVC-UserForm:
+
+URL: http://localhost:8080/
+
+Verwenden Sie den WebDriver Code aus dem Beispiel: Selenium-User
+
+A) Page Objects
+Implementieren Sie die folgenden Page Object Klassen:
+    - AddUserPO
+    - ResultPO
+Testen Sie Ihre Implementierung mit der Klasse SeleniumPOTest.
+
+B) Weiterer JUnit Test 
+Fügen Sie einen weiteren Testfall hinzu: testAddUserMarge()
+    ID: 8
+    Username = "marge"
+    Password = "bluehair"

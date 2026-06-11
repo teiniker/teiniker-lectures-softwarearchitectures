@@ -26,7 +26,7 @@ public class SeleniumTest
     }
 
     @Test
-    public void addUserTest() 
+    public void testAddUserHomer() 
     {
         driver.get("http://localhost:8080/");
         driver.findElement(By.id("id")).sendKeys("7");

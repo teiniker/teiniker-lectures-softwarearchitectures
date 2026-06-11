@@ -64,4 +64,4 @@ controlling code. This is commonly referred to as just WebDriver.
 
 * [Selenium IDE - Getting Started](https://www.selenium.dev/selenium-ide/docs/en/introduction/getting-started)
 
-*Egon Teiniker, 2016-2025, GPL v3.0*
+*Egon Teiniker, 2016-2026, GPL v3.0*
