@@ -1,8 +1,5 @@
 package org.se.lab;
 
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,14 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name=Person.TABLE_NAME)
-
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="DISCRIMINATOR", discriminatorType=DiscriminatorType.STRING)
-@DiscriminatorValue("PERSON")
-
-//@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-
-//@Inheritance(strategy=InheritanceType.JOINED)
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class Person
 {
 	public static final String TABLE_NAME = "PERSON";

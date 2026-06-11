@@ -1,12 +1,10 @@
 package org.se.lab;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
 @Table(name=Customer.TABLE_NAME)
-@DiscriminatorValue("CUSTOMER")
 public class Customer
 	extends Person
 {
