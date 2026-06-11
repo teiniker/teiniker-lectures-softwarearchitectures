@@ -9,34 +9,52 @@
 			"path": "software-quality/persistent-fixtures/JDBC-UserTable"
 		},
 		{
+			"name": "SQLite-UserTable",
 			"path": "software-quality/persistent-fixtures/SQLite-UserTable"
 		},
 		{
+			"name": "SQLite-UserTable-InMemory",
 			"path": "software-quality/persistent-fixtures/SQLite-UserTable-InMemory"
 		},
 		{
+			"name": "DAO-JDBC-User",
 			"path": "layered/data-source/DAO-JDBC-User"
 		},
 		{
+			"name": "JPA-EntityManager",
 			"path": "layered/data-source/JPA-EntityManager"
 		},
 		{
-			"path": "layered/data-source/DAO-JPA-Article"
-		},
-		{
+			"name": "DAO-JPA-User",
 			"path": "layered/data-source/DAO-JPA-User"
 		},
 		{
+			"name": "DAO-JPA-User-Generics",
 			"path": "layered/data-source/DAO-JPA-User-Generics"
 		},
 		{
-			"path": "layered/data-source/JPA-Inheritance"
+			"name": "DAO-JPA-Article",
+			"path": "layered/data-source/DAO-JPA-Article"
 		},
 		{
+			"name": "JPA-Inheritance-SingleTable",
+			"path": "layered/data-source/JPA-Inheritance-SingleTable"
+		},
+		{
+			"name": "JPA-Inheritance-ClassTable",
+			"path": "layered/data-source/JPA-Inheritance-ClassTable"
+		},
+		{
+			"name": "JPA-Inheritance-Joined",
+			"path": "layered/data-source/JPA-Inheritance-Joined"
+		},
+		{
+			"name": "JPA-Relationships",
 			"path": "layered/data-source/JPA-Relationships"
 		}
 	],
 	"settings": {
-		"java.compile.nullAnalysis.mode": "automatic"
+		"java.compile.nullAnalysis.mode": "automatic",
+		"java.configuration.updateBuildConfiguration": "interactive"
 	}
 }
