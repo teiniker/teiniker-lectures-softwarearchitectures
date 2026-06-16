@@ -21,7 +21,7 @@ public class TranslatorPO
     public ResultPO translate()
     {
         driver.findElement(By.name("word")).click();
-        driver.findElement(By.name("word")).sendKeys("cat");
+        driver.findElement(By.name("word")).sendKeys(word);
         driver.findElement(By.name("language")).click();
         switch(language)
         {

@@ -25,6 +25,12 @@ public class SeleniumTranslatorTest
     }
 
     @Test
+    public void testPage()
+    {
+        driver.get("http://localhost:8080/index.html");
+    }
+
+    @Test
     public void testCatFrench()
     {
         driver.get("http://localhost:8080/index.html");
