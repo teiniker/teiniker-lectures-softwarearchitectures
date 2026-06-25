@@ -147,13 +147,13 @@ service HelloService
 }
 ```
 
-**`syntax = "proto3"`** -- selects the third version of the proto language.
+**`syntax = "proto3"`**: selects the third version of the proto language.
 
-**`option java_multiple_files = true`** -- instructs the compiler to generate
+**`option java_multiple_files = true`**: instructs the compiler to generate
 each top-level message and service in its own `.java` file instead of nesting
 everything in one outer class.
 
-**`package org.se.lab`** -- sets the Java package for all generated classes.
+**`package org.se.lab`**: sets the Java package for all generated classes.
 
 **Messages** map to immutable Java classes. Each field has a scalar or
 composite type and a unique field number used in the binary encoding.
@@ -201,9 +201,9 @@ Running `mvn test` triggers the following steps:
    as source roots so the normal compiler picks them up.
 
 The generated files for the `HelloService` example are:
-- **`HelloRequest.java`** -- immutable message class with a builder.
-- **`HelloResponse.java`** -- immutable message class with a builder.
-- **`HelloServiceGrpc.java`** -- service base class and client stub factory.
+- **`HelloRequest.java`**: immutable message class with a builder.
+- **`HelloResponse.java`**: immutable message class with a builder.
+- **`HelloServiceGrpc.java`**: service base class and client stub factory.
 
 
 ## Services
