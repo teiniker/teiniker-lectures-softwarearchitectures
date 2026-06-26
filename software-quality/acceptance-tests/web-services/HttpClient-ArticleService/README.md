@@ -1,23 +1,46 @@
-# Example: Article Service API Client
+# Example: HTTP Client for the ArticleService API 
 
+## Setup
 
-## Curl 
-
-
+We have to start the `ArticleService` first:
 ```bash
-$ curl -i http://localhost:8080/articles
+$ cd api-styles/SpringBoot-ArticleService
+$ mvn spring-boot:run
+```
 
-$ curl -i http://localhost:8080/articles/1
-$ curl -i http://localhost:8080/articles/666
+As a quick check, run the following `curl` statement:
+```bash
+$ curl -i -k http://localhost:8080/articles
 
-$ curl -i -X POST http://localhost:8080/articles -H 'Content-type:application/json' -d '{"description":"CaDA Master C61505W","price":21174}'
+HTTP/1.1 200 
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Sun, 01 Feb 2026 09:44:41 GMT
 
-$ curl -i -X PUT http://localhost:8080/articles/1 -H 'Content-type:application/json' -d '{"id":1,"description":"LEGO 42122 Technic Jeep Wrangler 4x4 ","price":2200}'
+[
+  {"id":1,"description":"Design Patterns","price":4295},
+  {"id":2,"description":"Effective Java","price":3336}
+]
+```
 
-$ curl -i -X DELETE http://localhost:8080/articles/2
+## GET Requests
+
+```Java
+    SSLContext ssl = sslContextFromTruststore();
+    HttpClient client = HttpClient.newBuilder()
+            .sslContext(ssl)
+            .build();
+
+    HttpRequest request = HttpRequest.newBuilder()
+            .uri(URI.create("http://localhost:8080/articles/1"))
+            .header("Accept", "application/json")
+            .GET()
+            .build();
+    HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+    int status = response.statusCode();
+    String content = response.body();
 ```
 
 
-## Java Client
-
-```java
+*Egon Teiniker, 2016-2026, GPL v3.0*
