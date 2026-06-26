@@ -7,7 +7,7 @@ These architectural principles are defined as:
 * A uniform, constrained interface
 * Representation-oriented
 * Communicate statelessly
-* **Hypermedia As The Engine Of Application State (HATEOAS)**
+* Hypermedia As The Engine Of Application State (HATEOAS)
 
 ## Addressability
 Addressability is the idea that every object and resource in our system is reachable through a unique identifier.
@@ -111,4 +111,4 @@ behind restful thinking:
 * Martin Fowler. **Richardson Maturity Model - Steps toward the glory of REST**.
 	http://martinfowler.com/articles/richardsonMaturityModel.html, 2010
 
-*Egon Teiniker, 2016-2023, GPL v3.0*
+*Egon Teiniker, 2016-2026, GPL v3.0*

@@ -4,6 +4,18 @@
 The framework is based on a **client-server model** of remote procedure calls. 
 A client application can directly call methods on a server application as if it was a local object.
 
+## Setup 
+
+We have to start the server first, before we can run test client's tests:
+
+```bash
+# Start the server process
+$ mvn exec:java 
+
+# Run the client-side tests 
+$ mvn test
+```
+
 ## Defining the Service
 We define a service by specifying **methods** that can be called remotely along with their **parameters** 
 and **return types**.
