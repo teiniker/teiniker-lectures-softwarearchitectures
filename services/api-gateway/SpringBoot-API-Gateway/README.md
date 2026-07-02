@@ -62,6 +62,50 @@ logging:
           gateway: TRACE
 ```
 
+**The route definition**:
+
+- `id: path_route`: Just a human-readable identifier for the route. 
+  It has no functional effect, it shows up in logs.
+
+- `uri: http://localhost:9090`: The downstream target. 
+  Any request matching this route gets forwarded to a service running 
+  locally on port 9090.
+
+- `Path=/v1/**`: The predicate that decides *whether* the route applies. 
+  It matches any incoming request whose path starts with `/v1/`, 
+  including nested paths (`**` matches multiple segments), 
+  e.g. `/v1/users`, `/v1/orders/42/items`.
+
+- `RewritePath=/v1/(?<segment>.*), /$\{segment}`: A filter that modifies  
+  the request *before* forwarding. It's a regex replacement:
+  - `/v1/(?<segment>.*)` matches the path and captures everything after 
+    `/v1/` into a named group called `segment`.
+  - `/$\{segment}` is the replacement. The backslash is YAML escaping so 
+    Spring's property resolution doesn't try to interpolate `${segment}` 
+    as a config placeholder at load time; at runtime it becomes the regex 
+    replacement `/${segment}`.
+  
+  Net effect: the `/v1` prefix is stripped. A request to the gateway at 
+  `GET /v1/users/42` is forwarded as `GET http://localhost:9090/users/42`. 
+  This is the classic pattern when the gateway exposes a versioned public 
+  API but the backend service doesn't know about the version prefix.
+
+
+**The logging block**:
+
+Sets the logger for the `org.springframework.cloud.gateway` package to 
+`TRACE`, the most verbose level. We'll see detailed output about route 
+matching (which predicates were evaluated and whether they matched), 
+filter chain execution, and request forwarding. 
+
+Useful while developing or debugging why a route isn't matching, we would 
+normally remove it or dial it back to `INFO` in production, since TRACE is 
+noisy and adds overhead.
+
+## Examples
+
+Here are a few examples of how to access the service through the API Gateway:
+
 ```
 $ curl -i http://localhost:8080/v1/books
 HTTP/1.1 200 OK
@@ -96,4 +140,4 @@ The path `/v1/books` will be rewritten to: `/books`.
 * [Spring Cloud Tutorial - Spring Cloud Gateway Hello World Example](https://www.javainuse.com/spring/cloud-gateway)
 * [Spring Cloud Gateway](https://cloud.spring.io/spring-cloud-gateway/reference/html)
 
-*Egon Teiniker, 2017-2024, GPL v3.0*
+*Egon Teiniker, 2016-2026, GPL v3.0*
