@@ -1,0 +1,24 @@
+Exercise: Service Connector - BookService
+-------------------------------------------------------------------------------
+
+Starten Sie das BookService: 
+
+$ cd services/api-styles/SpringBoot-BookService 
+$ mvn spring-boot:run
+
+A) curl Requests
+Testen Sie das BookService manuell mittels der folgenden curl statements:
+
+$ curl -i http://localhost:8080/books
+$ curl -i http://localhost:8080/books/2
+$ curl -i http://localhost:8080/books/666
+$ curl -i -X POST http://localhost:8080/books -H 'Content-type:application/json' -d '{"author":"Robert C. Martin","title":"Clean Code","isbn":"978-0132350884"}'
+$ curl -i -X PUT http://localhost:8080/books/1 -H 'Content-type:application/json' -d '{"author":"Joshua Bloch","title":"Effective Java, 2nd Edition","isbn":"978-0134685991"}'
+$ curl -i -X DELETE http://localhost:8080/books/2
+
+B) Service Connector 
+Implementieren Sie das gegebene "BookServiceConnector" interface in einer 
+Klasse mit dem Namen "BookServiceConnectorImpl".
+
+Überprüfen Sie Ihre Implementierung mit der gegebenen Klasse "BookServiceTest".
+
