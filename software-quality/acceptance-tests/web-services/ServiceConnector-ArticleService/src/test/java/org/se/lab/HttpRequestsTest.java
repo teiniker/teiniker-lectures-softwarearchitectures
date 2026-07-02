@@ -18,7 +18,7 @@ public class HttpRequestsTest
     }
 
 
-    // curl -i -k http://localhost:8080/articles
+    // curl -i -k http://localhost:8080/articles/2
 	@Test
 	public void testById() 
     {

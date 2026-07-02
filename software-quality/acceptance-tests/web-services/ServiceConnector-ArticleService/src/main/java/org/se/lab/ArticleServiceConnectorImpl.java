@@ -172,7 +172,10 @@ public class ArticleServiceConnectorImpl
         }
     }
 
-       protected Article convertJson2Article(String json)
+    
+    // Converter methods
+    
+    protected Article convertJson2Article(String json)
     {
         Article article = null;
         try
