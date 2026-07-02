@@ -1,4 +1,4 @@
-# Service Connector
+# Service Connector Pattern
 
 > Service Connectors make services easier to use by **hiding the specifics 
 > of communications-related APIs**. 
