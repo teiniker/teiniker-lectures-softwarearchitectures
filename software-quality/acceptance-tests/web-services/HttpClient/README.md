@@ -8,7 +8,7 @@ It was introduced in Java 11 and is fully mature and stable in Java 21.
 ## Core Building Blocks
 
 There are three main types used in the context of the HttpClient:
-HttpClient, HttpRequest, and HttpResponse<T>.
+`HttpClient`, `HttpRequest`, and `HttpResponse<T>`.
 
 ### HttpClient
 
