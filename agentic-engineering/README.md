@@ -6,6 +6,7 @@
     - [Agent Architectures](agent-architecture/README.md)
     - [Claude Code](agents/claude-code/README.md)
     - [GitHub Copilot CLI](agents/github-copilot-cli/README.md)
+    - [Context File](agent-context-files/README.md)
     - [Skills](skills/)
 
 * Agentic Workflows
