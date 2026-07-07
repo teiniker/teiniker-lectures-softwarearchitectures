@@ -192,6 +192,8 @@ think of as "part of the prompt" is folded into one of these.
 
 ## References 
 
+* [YouTube (Matt Pocock): Most devs don't understand what agents are](https://youtu.be/AtYtuVTZCQU?si=ZK9oq8_6-hO7p-BC)
+
 * [Birgitta Böckeler: Harness engineering for coding agent users](https://www.martinfowler.com/articles/harness-engineering.html)
 
 * [How Claude Code works](https://code.claude.com/docs/en/how-claude-code-works)

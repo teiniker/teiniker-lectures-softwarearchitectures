@@ -13,7 +13,10 @@
     - [Extreme Prompting]()
 
 * Examples
-    - [Refactorint towards Clean Architecture](examples/clean-architecture-session.md)
+    - [Refactorint towards Clean Architecture](examples/refactoring/clean-architecture-session.md)
+    - [Requirements analysis]()
+    - [Documentation]()
 
+* [Lessons Learned](lessons-learned/README.md)
 
 *Egon Teiniker, 2026, GPL v3.0*        
