@@ -70,25 +70,37 @@ per line than you'd guess).
 
 
 ### Prompt 
-The prompt is the entire **input handed to the model** for one 
-forward pass: system prompt, tool schemas, the whole accumulated history, 
-and your latest message, concatenated into one token sequence.
+The prompt is **the instruction we write for the current turn**: the 
+question or task we type, on its own, before the harness assembles 
+anything around it.
 
 
 ### Context
 
-This is the **total text fed into the LLM for a single request**. It includes 
-the system instructions, the past conversation history, retrieved documents, 
-and our current prompt.
+The context is the **total text actually fed into the model** for one 
+forward pass. The harness builds it by concatenating the system prompt, 
+tool schemas, the past conversation history, retrieved documents, and 
+our current prompt into a single token sequence. The prompt is only one 
+ingredient in the context; everything else is added around it before it 
+reaches the model.
 
-**Context Window:** This is the absolute limit of data the model can 
-process at one time. It is measured in tokens.
+* **Context Window:** This is the absolute limit of data the model can 
+    process at one time. It is measured in tokens.
 
-**Context Window Exhaustion**: If a session goes on for weeks and the 
-sheer volume of text exceeds the model's context window (its token 
-limit), the application will begin "summarizing" older parts of the 
-session or dropping the oldest messages entirely to make room for 
-new ones.
+* **Context Window Exhaustion**: If a session goes on for weeks and the 
+    sheer volume of text exceeds the model's context window (its token 
+    limit), the application will begin "summarizing" older parts of the 
+    session or dropping the oldest messages entirely to make room for 
+    new ones.
+
+* **Context Rot**: Model quality degrades as the context fills up, even 
+    before we hit the hard token limit. Instructions and details buried 
+    early in a long session get less attention than recent turns, so the 
+    model can start ignoring an earlier constraint or forgetting a detail we 
+    mentioned, 
+    simply because too much unrelated text has piled up in between. This is 
+    why compacting, or starting a fresh session for a new sub-task, often 
+    gives sharper results than pushing one long session to its limit.
 
 
 ### Session
