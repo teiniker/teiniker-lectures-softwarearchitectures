@@ -141,8 +141,6 @@ rather than a crash.
 
 ## Anatomy of a Prompt
 
-
-
 The prompt entered by the user is not sent directly to the LLM. 
 In fact, the **sent prompt consists of several parts**.
 

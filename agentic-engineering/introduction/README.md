@@ -1,24 +1,81 @@
 # Introduction
 
+
+## Evolution of Generative AI 
+
+Generative AI did not arrive in software development as a finished coding 
+agent. It moved through several stages, each one handing the model more 
+context about our code and more control over our tools.
+
+### Stage 1: Chatbot
+
+The model lives in a **separate window**, completely disconnected from our 
+editor and our project. We ask a question or paste a snippet, read the 
+answer, and copy the result back into our own files by hand. The model has 
+no access to our codebase; it only knows what we typed into the chat.
+
+*Example:* Asking ChatGPT (2022) or Claude.ai "write a function that parses 
+a CSV file in Python", then copy-pasting the generated function into our 
+own editor.
+
+### Stage 2: IDE Autocomplete
+
+The model moves **into the editor**, but stays passive. It observes the 
+current file (and sometimes a few open tabs) and silently suggests the 
+next few lines at the cursor. There is no conversation, just an inline 
+suggestion we accept with `Tab` or dismiss by continuing to type.
+
+*Example:* GitHub Copilot's ghost-text completions, or Tabnine, finishing 
+a `for` loop or a function signature as we type it.
+
+### Stage 3: Inline Chat
+
+The editor gains a **chat panel** that can see our open files and, on 
+request, parts of our project. We can ask it to explain a function, write 
+a test, or refactor a block, and it proposes a diff. We still drive every 
+turn: we ask, review, and click "Apply" (or reject) for each change 
+individually.
+
+*Example:* GitHub Copilot Chat or Cursor's Chat/Composer panel, where we 
+ask "add error handling to this function" and manually approve the 
+suggested diff.
+
+### Stage 4: Coding Agents
+
+The model is wrapped in a **harness that gives it tools**: read files, 
+edit files, run shell commands, run tests, search the repository. Instead 
+of one suggestion per turn, the model runs a loop: it reads what it needs, 
+makes a change, runs the tests, reads the failure, and tries again, 
+largely on its own, across many files, until the task is done.
+
+*Example:* Claude Code, given the task "add a `stack_top` bounds check and 
+make the tests pass," reads `stack.c` and `test.c`, edits the source, 
+runs `make test`, and iterates on the result without us reviewing every 
+intermediate step.
+
+See [Coding Agent Architecture](../agent-architecture/README.md) for a 
+detailed breakdown of the model/harness/tools split that makes Stage 4 
+possible.
+
+
+## Important Terms
+
 The following section defines the most important terms necessary for 
 understanding Coding Agents.
 
-## Tokens
+### Tokens
 Everything is measured in tokens: **chunks of text** roughly ¾ of a word each 
 in English (code tends to tokenize less efficiently, so it eats more tokens 
 per line than you'd guess). 
 
 
-## Prompt 
+### Prompt 
 The prompt is the entire **input handed to the model** for one 
 forward pass: system prompt, tool schemas, the whole accumulated history, 
 and your latest message, concatenated into one token sequence.
 
-**Prompt engineering** is the craft of shaping this input to get better 
-output. 
 
-
-## Context
+### Context
 
 This is the **total text fed into the LLM for a single request**. It includes 
 the system instructions, the past conversation history, retrieved documents, 
@@ -34,7 +91,7 @@ session or dropping the oldest messages entirely to make room for
 new ones.
 
 
-## Session
+### Session
 A session (often called a thread or a conversation) is the organizational 
 boundary managed by the application layer to keep a single, continuous 
 conversation separate from all others.
