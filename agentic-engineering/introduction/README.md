@@ -159,5 +159,6 @@ the final answer will be correct.
 * [YouTube (Matt Pocock): Most devs don't understand how LLM tokens work](https://youtu.be/nKSk_TiR8YA?si=0w2MMky8XPKCD4k5)
 * [YouTube (Andrej Karpathy): Deep Dive into LLMs like ChatGPT](https://youtu.be/7xTGNNLPyMI?si=X8CJSDOogrZp7KyO)
 
+* [Exploring Generative AI](https://martinfowler.com/articles/exploring-gen-ai.html)
 
 *Egon Teiniker, 2026, GPL v3.0*
