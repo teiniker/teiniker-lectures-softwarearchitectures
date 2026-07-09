@@ -2,6 +2,7 @@ package org.se.lab;
 
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,9 +40,11 @@ public class BookController
     }
 
     @PostMapping
-    public Book insert(@RequestBody Book book)
+    public ResponseEntity<Book> insert(@RequestBody Book book)
     {
-        return bookRepository.save(book);
+        book.setId(0);
+        Book savedBook = bookRepository.save(book);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedBook);
     }
 
 
