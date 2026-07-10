@@ -28,8 +28,6 @@ _claude>_ **In this directory, write an Analysis.md file with your
 
 _claude>_ **Add a class diagram in Mermaid format to Analysis.md**
 
-TODO: Explain what Mermaid diagrams are and why Claude can generate them.
-
 
 ## Find Problems in the Given Code Base
 
