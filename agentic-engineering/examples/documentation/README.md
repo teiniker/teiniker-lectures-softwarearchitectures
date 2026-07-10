@@ -8,13 +8,6 @@ exactly what belongs there. Diagram placeholders and links to the
 concrete implementation the documentation describes complete the
 template.
 
-This works for the same reason structured user stories beat free-form
-prose in requirements analysis: the template forces the content into
-a fixed, reviewable shape before a single line of prose is generated,
-and each `TODO` is small and specific enough to check against the
-actual code in one glance, instead of having to judge several pages
-of freshly generated text as a whole.
-
 
 ## The Template
 

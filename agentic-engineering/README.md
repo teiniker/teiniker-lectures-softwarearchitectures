@@ -10,13 +10,11 @@
     - [Skills](skills/)
 
 * Examples
+    - Demo: [documentation](examples/documentation/)
     - Demo: [project-analysis](examples/project-analysis/)
     - Demo: [requirements-analysis](examples/requirements-analysis/)
     - Demo: [development](examples/development/)
     - Demo: [refactoring](examples/refactoring/)
-
-
-    - [Documentation]()
 
 * Agentic Workflows
     - [AI Collaboration Patterns](ai-collaboration-patterns/)
