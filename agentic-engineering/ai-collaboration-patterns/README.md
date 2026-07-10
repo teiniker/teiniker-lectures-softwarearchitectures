@@ -56,7 +56,6 @@ The AI needs the same things a human pair needs:
 #### Proposed Patterns for AI Collaboration:
 
 - [Knowledge Priming](KnowledgePriming.md): 
-    
     Proactively sharing curated project context (architectural choices, 
     tech stacks, naming conventions) with the AI before generating code, 
     effectively acting as manual Retrieval-Augmented Generation (RAG). 
