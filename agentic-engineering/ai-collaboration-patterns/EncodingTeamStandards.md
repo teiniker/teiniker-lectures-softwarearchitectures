@@ -189,3 +189,5 @@ interaction with AI needs a dedicated instruction.
 ## References
 
 * [Encoding Team Standards](https://martinfowler.com/articles/reduce-friction-ai/encoding-team-standards.html)
+
+*Egon Teiniker, 2026, GPL v3.0*

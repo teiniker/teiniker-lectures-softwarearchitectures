@@ -56,20 +56,39 @@ The AI needs the same things a human pair needs:
 #### Proposed Patterns for AI Collaboration:
 
 - [Knowledge Priming](KnowledgePriming.md): 
-    What to include, how to structure it, how to keep it current
+    
+    Proactively sharing curated project context (architectural choices, 
+    tech stacks, naming conventions) with the AI before generating code, 
+    effectively acting as manual Retrieval-Augmented Generation (RAG). 
+    This anchors the model's output to specific codebase constraints 
+    rather than generic training data.
 
 - [Design-First Collaboration](DesignFirstCollaboration.md): 
-    The levels of design, handling AI that wants to skip ahead
+    Structuring the AI interaction like a whiteboard session with a human 
+    peer, stepping through progressive levels of design before any 
+    implementation begins. This prevents the cognitive overload of untangling 
+    implicit architectural decisions buried within prematurely generated code.
 
 - [Encoding Team Standards](EncodingTeamStandards.md): 
-    Making tacit knowledge explicit, scaling senior intuition across the team
+    Transforming tacit senior developer knowledge into explicit, version-
+    controlled instructions that the AI executes during code generation, 
+    refactoring, and security reviews.
 
 - [Context Anchoring](ContextAnchoring.md): 
-    Managing long conversations, surviving session boundaries
+    Treating feature-level decision context as external state by maintaining 
+    a persistent, living document of architectural choices, open questions, 
+    and rejected alternatives. This external memory prevents the AI from 
+    forgetting crucial reasoning as context windows fill up or ephemeral 
+    sessions restart.
 
 - [Feedback Flywheel](FeedbackFlywheel.md): 
-    Systematic improvement, measuring what matters
+    A systematic, lightweight practice for harvesting insights from daily 
+    AI interactions and feeding those insights back into the team's shared 
+    priming documents and instruction files. This active feedback loop 
+    ensures the AI collaboration infrastructure compounds in value over time.
 
 ## References
 
 * [Patterns for Reducing Friction in AI-Assisted Development](https://martinfowler.com/articles/reduce-friction-ai/)
+
+*Egon Teiniker, 2026, GPL v3.0*

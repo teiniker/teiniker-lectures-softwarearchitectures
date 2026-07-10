@@ -238,3 +238,5 @@ aligned code.
 * [YouTube (Net Ninja): Copilot CLI Tutorial - Custom Instructions](https://youtu.be/oA1LDB9tdZU?si=HnVYRYWroRBwnH1k)
 
 * [GitHub Copilot Documentation: Adding custom instructions for GitHub Copilot CLI](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-custom-instructions)
+
+*Egon Teiniker, 2026, GPL v3.0*

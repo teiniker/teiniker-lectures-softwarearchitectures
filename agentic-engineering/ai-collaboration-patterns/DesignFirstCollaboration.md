@@ -119,3 +119,9 @@ immediately requesting code. For trivial tasks, the overhead is not justified.
 There is also a learning curve. Developers accustomed to typing a prompt and 
 receiving code may find the sequential structure unfamiliar at first. 
 
+
+## References
+
+* [Design-First Collaboration](https://martinfowler.com/articles/reduce-friction-ai/design-first-collaboration.html)
+
+*Egon Teiniker, 2026, GPL v3.0*
