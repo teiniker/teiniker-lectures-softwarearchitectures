@@ -9,14 +9,18 @@
     - [Context File](agent-context-files/README.md)
     - [Skills](skills/)
 
+* Examples
+    - Demo: [project-analysis](examples/project-analysis/)
+    - Demo: [requirements-analysis](examples/requirements-analysis/)
+    - Demo: [development](examples/development/)
+    - Demo: [refactoring](examples/refactoring/)
+
+
+    - [Documentation]()
+
 * Agentic Workflows
     - [AI Collaboration Patterns](ai-collaboration-patterns/)
     - [Extreme Prompting]()
-
-* Examples
-    - [Refactorint towards Clean Architecture](examples/refactoring/clean-architecture-session.md)
-    - [Requirements analysis]()
-    - [Documentation]()
 
 * [Lessons Learned](lessons-learned/README.md)
 
