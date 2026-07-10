@@ -54,11 +54,21 @@ The AI needs the same things a human pair needs:
 - Guardrails: Standards and quality checks consistently applied
 
 #### Proposed Patterns for AI Collaboration:
-- **Knowledge Priming**: What to include, how to structure it, how to keep it current
-- **Design-First Collaboration**: The levels of design, handling AI that wants to skip ahead
-- **Encoding Team Standards**: Making tacit knowledge explicit, scaling senior intuition across the team
-- **Context Anchoring**: Managing long conversations, surviving session boundaries
-- **Feedback Flywheel**: Systematic improvement, measuring what matters
+
+- [Knowledge Priming](KnowledgePriming.md): 
+    What to include, how to structure it, how to keep it current
+
+- [Design-First Collaboration](DesignFirstCollaboration.md): 
+    The levels of design, handling AI that wants to skip ahead
+
+- [Encoding Team Standards](EncodingTeamStandards.md): 
+    Making tacit knowledge explicit, scaling senior intuition across the team
+
+- [Context Anchoring](ContextAnchoring.md): 
+    Managing long conversations, surviving session boundaries
+
+- [Feedback Flywheel](FeedbackFlywheel.md): 
+    Systematic improvement, measuring what matters
 
 ## References
 
