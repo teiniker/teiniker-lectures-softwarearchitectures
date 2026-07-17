@@ -1,4 +1,4 @@
-# Agentic Engineering
+# Agentic Software Engineering
 
 * [Introduction](introduction/README.md)
 
