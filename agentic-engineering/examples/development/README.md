@@ -50,7 +50,7 @@ _claude>_ **In the plan, change ddl-auto=update to create. Remove 6.
     $ sudo systemctl start mariadb.service
     ```
 
-Implementing story by story, with a review after each one, is what
+Implementing **story by story**, with a **review after each one**, is what
 keeps this process trustworthy. A diff that adds one controller
 method is something we can actually read end to end; a diff that adds
 six at once is something we can only skim. Reviewing after every
