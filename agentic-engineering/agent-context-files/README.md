@@ -54,8 +54,7 @@ derivable from the code (file structure, dependencies, git history).
 * Encodes tacit project knowledge (conventions, pitfalls) that would
     otherwise live only in a senior developer's head.
 * Makes agent behavior more consistent across sessions and users.
-* Costs comparatively few tokens, since it is written once and
-    reused every session.
+
 
 **Drawbacks**
 
